@@ -5,8 +5,7 @@ import Homepagea from './views/homepage'
 
 function App() {
   return (
-    <div className="App">
-      <img src={logo} className="m-auto App-logo" alt="logo" />
+    <div className="Apps">
       <Homepagea />
     </div>
   )
