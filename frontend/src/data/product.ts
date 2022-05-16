@@ -2,6 +2,7 @@ import { Product } from '../types'
 const product: Product = {
   products: [
     {
+      numberk: 1,
       name: 'Nike Slim shirt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
@@ -14,6 +15,7 @@ const product: Product = {
       description: 'high quality shirt',
     },
     {
+      numberk: 2,
       name: 'Adidas Fit Shirt',
       slug: 'adidas-fit-shirt',
       category: 'Shirts',
@@ -26,6 +28,7 @@ const product: Product = {
       description: 'high quality product',
     },
     {
+      numberk: 3,
       name: 'Nike Slim Pant',
       slug: 'nike-slim-pant',
       category: 'Pants',
@@ -38,6 +41,7 @@ const product: Product = {
       description: 'high quality product',
     },
     {
+      numberk: 4,
       name: 'Adidas Fit Pant',
       slug: 'adidas-fit-pant',
       category: 'Pants',

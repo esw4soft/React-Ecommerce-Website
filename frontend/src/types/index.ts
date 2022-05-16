@@ -1,4 +1,5 @@
 interface Productdet {
+  numberk: number
   name: string
   slug: string
   category: string

@@ -6,22 +6,8 @@ import Homepagea from './views/homepage'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1 className="text-6xl font-bold underline">Hello world!</h1>
-        <Homepagea />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src sddfgsvs/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={logo} className="m-auto App-logo" alt="logo" />
+      <Homepagea />
     </div>
   )
 }
