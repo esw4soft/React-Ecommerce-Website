@@ -1,13 +1,26 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.scss'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Homepagea from './views/homepage'
+import Productpage from './views/product'
 
 function App() {
   return (
-    <div className="Apps">
-      <Homepagea />
-    </div>
+    <BrowserRouter>
+      <div>
+        <header>
+          <Link to="/" className="font-bold">
+            hollowmazon
+          </Link>
+        </header>
+        <main className="p-4">
+          <Routes>
+            <Route path="/product/:slug" element={<Productpage />} />
+            <Route path="/" element={<Homepagea />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
