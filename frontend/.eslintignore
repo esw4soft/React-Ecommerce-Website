@@ -3,5 +3,5 @@ node_modules/
 src/serviceWorker.js
 *.css
 *.svg
-tailwind.config.js
-postcss.config.js
+./tailwind.config.js
+./postcss.config.js

@@ -1,26 +1,26 @@
 import React from 'react'
-import logo from './logo.svg'
 import './App.scss'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import Homepagea from './views/homepage'
+import Productpage from './views/product'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="text-6xl font-bold underline">Hello world!</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src sddfgsvs/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div>
+        <header>
+          <Link to="/" className="font-bold">
+            hollowmazon
+          </Link>
+        </header>
+        <main className="p-4">
+          <Routes>
+            <Route path="/product/:slug" element={<Productpage />} />
+            <Route path="/" element={<Homepagea />} />
+          </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
