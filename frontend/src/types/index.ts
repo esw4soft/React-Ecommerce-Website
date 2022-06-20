@@ -1,3 +1,5 @@
+import { getProduct } from './reducer'
+
 interface Productdet {
   numberk: number
   name: string
@@ -16,4 +18,4 @@ export interface Product {
   products: [Productdet, Productdet, Productdet, Productdet]
 }
 
-export type { Productdet }
+export type { Productdet, getProduct }
