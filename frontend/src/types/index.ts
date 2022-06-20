@@ -15,3 +15,5 @@ interface Productdet {
 export interface Product {
   products: [Productdet, Productdet, Productdet, Productdet]
 }
+
+export type { Productdet }
