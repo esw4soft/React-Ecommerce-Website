@@ -12,6 +12,10 @@ interface Productdet {
   rating: number
   numReviews: number
   description: string
+
+  loading: boolean
+  error: string
+  products: []
 }
 
 export interface Product {

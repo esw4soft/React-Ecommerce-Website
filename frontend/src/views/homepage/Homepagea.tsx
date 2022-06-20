@@ -19,21 +19,33 @@ const reducer = (state: Productdet, action: getProduct) => {
 }
 
 const Homepagea = () => {
-  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
+  const resobj: Productdet = {
+    numberk: 0,
+    name: '',
+    slug: '',
+    category: '',
+    image: '',
+    price: 0,
+    countInStock: 0,
+    brand: '',
+    rating: 0,
+    numReviews: 0,
+    description: '',
     products: [],
     loading: true,
     error: '',
-  })
+  }
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, resobj)
   // const [products, setProducts] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      dispatch({ type: 'FETCH_REQUEST' })
+      dispatch({ type: 'FETCH_REQUEST', payload: '' })
 
       try {
         const result = await axios.get('./api/products')
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data })
-      } catch (err) {
+      } catch (err: any) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message })
       }
 
