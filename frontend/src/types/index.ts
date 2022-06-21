@@ -1,4 +1,4 @@
-import { GetProduct } from './reducer'
+import { GetProduct, ReducerState } from './reducer'
 
 interface ProductDet {
   numberk: number
@@ -22,4 +22,4 @@ export interface Product {
   products: [ProductDet, ProductDet, ProductDet, ProductDet]
 }
 
-export type { ProductDet, GetProduct }
+export type { ProductDet, GetProduct, ReducerState }
