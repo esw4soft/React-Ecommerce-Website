@@ -1,4 +1,6 @@
-interface Productdet {
+import { GetProduct, ReducerState } from './reducer'
+
+interface ProductDet {
   numberk: number
   name: string
   slug: string
@@ -10,8 +12,14 @@ interface Productdet {
   rating: number
   numReviews: number
   description: string
+
+  loading: boolean
+  error: string
+  products: []
 }
 
 export interface Product {
-  products: [Productdet, Productdet, Productdet, Productdet]
+  products: [ProductDet, ProductDet, ProductDet, ProductDet]
 }
+
+export type { ProductDet, GetProduct, ReducerState }

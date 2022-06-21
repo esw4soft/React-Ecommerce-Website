@@ -2,7 +2,7 @@ const product = {
   products: [
     {
       numberk: 1,
-      name: 'Nike Slim shirt',
+      name: 'Nike Slimgggg shittttt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
       image: '/images/p1.jpg',

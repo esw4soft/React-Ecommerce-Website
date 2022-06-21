@@ -13,6 +13,10 @@ const product: Product = {
       rating: 4.5,
       numReviews: 10,
       description: 'high quality shirt',
+
+      loading: true,
+      error: '',
+      products: [],
     },
     {
       numberk: 2,
@@ -26,6 +30,10 @@ const product: Product = {
       rating: 4.0,
       numReviews: 10,
       description: 'high quality product',
+
+      loading: true,
+      error: '',
+      products: [],
     },
     {
       numberk: 3,
@@ -39,6 +47,10 @@ const product: Product = {
       rating: 4.5,
       numReviews: 14,
       description: 'high quality product',
+
+      loading: true,
+      error: '',
+      products: [],
     },
     {
       numberk: 4,
@@ -52,6 +64,10 @@ const product: Product = {
       rating: 4.5,
       numReviews: 10,
       description: 'high quality product',
+
+      loading: true,
+      error: '',
+      products: [],
     },
   ],
 }
