@@ -1,6 +1,6 @@
-import { getProduct } from './reducer'
+import { GetProduct } from './reducer'
 
-interface Productdet {
+interface ProductDet {
   numberk: number
   name: string
   slug: string
@@ -19,7 +19,7 @@ interface Productdet {
 }
 
 export interface Product {
-  products: [Productdet, Productdet, Productdet, Productdet]
+  products: [ProductDet, ProductDet, ProductDet, ProductDet]
 }
 
-export type { Productdet, getProduct }
+export type { ProductDet, GetProduct }

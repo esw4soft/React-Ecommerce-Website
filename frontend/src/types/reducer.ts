@@ -1,6 +1,6 @@
-interface getProduct {
+interface GetProduct {
   type: string
   payload: any
 }
 
-export type { getProduct }
+export type { GetProduct }
