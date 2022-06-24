@@ -49,7 +49,7 @@ const Homepagea = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Featured Products</h1>
+      <h1 className="text-3xl font-bold">Featured Products</h1>
       <div className="products flex flex-wrap justify-center">
         {loading ? (
           <div>loading...</div>

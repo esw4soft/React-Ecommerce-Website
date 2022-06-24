@@ -7,19 +7,25 @@ import Productpage from './views/product'
 function App() {
   return (
     <BrowserRouter>
-      <div>
-        <header>
-          <Link to="/" className="font-bold">
+      <div className="min-h-[95vh]">
+        <header className="flex p-4 bg-black">
+          <Link
+            to="/"
+            className="container mx-auto font-bold bg-black text-white text-xl"
+          >
             hollowmazon
           </Link>
         </header>
-        <main className="p-4">
+        <main className="py-4 container mx-auto">
           <Routes>
             <Route path="/product/:slug" element={<Productpage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>
       </div>
+      <footer>
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </BrowserRouter>
   )
 }
