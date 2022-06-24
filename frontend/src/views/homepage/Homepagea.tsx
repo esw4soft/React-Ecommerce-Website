@@ -3,8 +3,8 @@ import { useEffect, useState, useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import logger from 'use-reducer-logger'
-import logo from '../../logo.svg'
 import { ProductDet, GetProduct, ReducerState } from '../../types'
+import Product from '../../components/Products'
 
 const reducer = (state: ReducerState, action: GetProduct) => {
   switch (action.type) {
@@ -57,22 +57,7 @@ const Homepagea = () => {
           <div>{error}</div>
         ) : (
           products.map((product: ProductDet) => (
-            <div key={product.numberk} className="product border m-4">
-              <Link to={`/product/${product.slug}`}>
-                <img
-                  className="w-full max-w-sm"
-                  src={logo}
-                  alt="product.name"
-                />
-              </Link>
-              <div className="product-info p-4">
-                <Link to={`/product/${product.slug}`}>
-                  <p>{product.name}</p>
-                </Link>
-                <p>{product.price}</p>
-                <button>add to card</button>
-              </div>
-            </div>
+            <Product key={product.slug} product={product}></Product>
           ))
         )}
       </div>
