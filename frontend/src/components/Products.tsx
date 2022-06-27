@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom'
 import logo from '../logo.svg'
 import { ProductDet } from '../types'
 
-function Products(props: any) {
+interface ProductsProps {
+  product: ProductDet
+}
+
+function Products(props: ProductsProps) {
   const { product } = props
 
   return (
