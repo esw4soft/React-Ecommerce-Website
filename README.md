@@ -10,6 +10,32 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 紀錄開發時遇到的問題和一些重要註記
 
+1. TypeScript 開發參考
+   `https://pjchender.dev/react/guide-typescript-react-tips/`
+   `https://pjchender.dev/react/note-react-with-ts/`
+
+2. TailwindCSS theme()變數無法直接塞入 SCSS, 需要使用:root 做轉換
+
+```scss
+:root {
+  --clw: theme(colors.white);
+  --bdl: theme(borderRadius.lg);
+  --sp6: theme(spacing.6);
+  --bsx: theme(boxShadow.xl);
+}
+
+@layer components {
+  .card {
+    background-color: var(--clw);
+    border-radius: var(--bdl);
+    padding: var(--sp6);
+    box-shadow: var(--bsx);
+  }
+}
+```
+
+`https://tailwindcss.com/docs/using-with-preprocessors`
+
 ## Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).
