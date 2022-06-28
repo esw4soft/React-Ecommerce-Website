@@ -8,10 +8,10 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-[95vh]">
-        <header className="flex p-4 bg-black">
+        <header className="flex p-4 bg-sky-900">
           <Link
             to="/"
-            className="container mx-auto font-bold bg-black text-white text-xl"
+            className="container mx-auto font-bold bg-sky-900 text-white text-xl"
           >
             hollowmazon
           </Link>

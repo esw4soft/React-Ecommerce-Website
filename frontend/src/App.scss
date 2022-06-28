@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --clw: theme(colors.white);
+  --bdl: theme(borderRadius.lg);
+  --sp6: theme(spacing.6);
+  --bsx: theme(boxShadow.xl);
+
+  --starColor: theme(colors.yellow.400);
+}
+
+@layer components {
+  .card {
+    background-color: var(--clw);
+    border-radius: var(--bdl);
+    padding: var(--sp6);
+    box-shadow: var(--bsx);
+  }
+
+  .rating>span {
+    color: var(--starColor);
+  }
+}
+
 .App {
   text-align: center;
 }
