@@ -18,7 +18,7 @@ function App() {
         </header>
         <main className="py-4 container mx-auto">
           <Routes>
-            <Route path="/product/:slug" element={<Productpage />} />
+            <Route path="/products/:slug" element={<Productpage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>
