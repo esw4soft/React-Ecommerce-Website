@@ -5,6 +5,7 @@ import axios from 'axios'
 import logger from 'use-reducer-logger'
 import { ProductDet, GetProduct, AllProductReducerState } from '../../types'
 import { Helmet } from 'react-helmet-async'
+import { Loadingcpm, Messagecpm } from '../../components'
 import Product from '../../components/Products'
 
 const reducer = (state: AllProductReducerState, action: GetProduct) => {
@@ -56,10 +57,11 @@ const Homepagea = () => {
       </Helmet>
       <div className="products flex flex-wrap justify-center">
         {loading ? (
-          <div>loading...</div>
+          <Loadingcpm />
         ) : error ? (
-          <div>{error}</div>
+          <Messagecpm>{error}</Messagecpm>
         ) : (
+          // <div>{error}</div>
           products.map((product: ProductDet) => (
             <Product key={product.slug} product={product}></Product>
           ))

@@ -5,6 +5,7 @@ import { ProductDet, GetProduct, ProductReducerState } from '../../types'
 import { useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Rating from '../../components/Rating'
+import { Loadingcpm, Messagecpm } from '../../components'
 import logo from '../../logo.svg'
 
 const reducer = (state: ProductReducerState, action: GetProduct) => {
@@ -39,16 +40,16 @@ function Productpage() {
         const result = await axios.get(`/api/products/slug/${slug}`)
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data })
       } catch (err: any) {
-        dispatch({ type: 'FETCH_FAIL', payload: err.message })
+        dispatch({ type: 'FETCH_FAIL', payload: err.response.data.message })
       }
     }
     fetchData()
   }, [slug])
 
   return loading ? (
-    <div>Loading...</div>
+    <Loadingcpm />
   ) : error ? (
-    <div>{error}</div>
+    <Messagecpm>{error}</Messagecpm>
   ) : (
     <>
       <div className="grid grid-cols-1 gap-8 items-start sm:grid-cols-2 lg:grid-cols-4">
