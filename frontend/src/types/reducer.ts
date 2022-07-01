@@ -3,10 +3,16 @@ interface GetProduct {
   payload: any
 }
 
-interface ReducerState {
+interface AllProductReducerState {
   products: []
   loading: boolean
   error: string
 }
 
-export type { GetProduct, ReducerState }
+interface ProductReducerState {
+  product: []
+  loading: boolean
+  error: string
+}
+
+export type { GetProduct, ProductReducerState, AllProductReducerState }

@@ -3,10 +3,11 @@ import { useEffect, useState, useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import logger from 'use-reducer-logger'
-import { ProductDet, GetProduct, ReducerState } from '../../types'
+import { ProductDet, GetProduct, AllProductReducerState } from '../../types'
+import { Helmet } from 'react-helmet-async'
 import Product from '../../components/Products'
 
-const reducer = (state: ReducerState, action: GetProduct) => {
+const reducer = (state: AllProductReducerState, action: GetProduct) => {
   switch (action.type) {
     case 'FETCH_REQUEST':
       return { ...state, loading: true }
@@ -20,7 +21,7 @@ const reducer = (state: ReducerState, action: GetProduct) => {
 }
 
 const Homepagea = () => {
-  const resobj: ReducerState = {
+  const resobj: AllProductReducerState = {
     products: [],
     loading: true,
     error: '',
@@ -36,7 +37,7 @@ const Homepagea = () => {
       dispatch({ type: 'FETCH_REQUEST', payload: '' })
 
       try {
-        const result = await axios.get('./api/products')
+        const result = await axios.get('/api/products')
         dispatch({ type: 'FETCH_SUCCESS', payload: result.data })
       } catch (err: any) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message })
@@ -50,6 +51,9 @@ const Homepagea = () => {
   return (
     <>
       <h1 className="text-3xl font-bold">Featured Products</h1>
+      <Helmet>
+        <title>hollowmazon</title>
+      </Helmet>
       <div className="products flex flex-wrap justify-center">
         {loading ? (
           <div>loading...</div>
