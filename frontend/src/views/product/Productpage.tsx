@@ -3,6 +3,7 @@ import { useEffect, useState, useReducer } from 'react'
 import axios from 'axios'
 import { ProductDet, GetProduct, ProductReducerState } from '../../types'
 import { useParams } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import Rating from '../../components/Rating'
 import logo from '../../logo.svg'
 
@@ -50,12 +51,15 @@ function Productpage() {
     <div>{error}</div>
   ) : (
     <>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 gap-8 items-start sm:grid-cols-2 lg:grid-cols-4">
         <section className="col-span-2">
-          <img className="img-large" src={logo} alt={product.name} />
+          <img className="img-large m-auto" src={logo} alt={product.name} />
         </section>
-        <section>
+        <section className="col-span-2 sm:col-span-1">
           <div className="py-2 px-3 border-b-2">
+            <Helmet>
+              <title>{product.name}</title>
+            </Helmet>
             <h1>{product.name}</h1>
           </div>
           <div className="py-2 px-3 border-b-2">
@@ -69,12 +73,13 @@ function Productpage() {
             Description: <p>{product.description}</p>
           </div>
         </section>
-        <section className="px-3 py-2 border">
+
+        <section className="col-span-2 sm:col-span-1 px-3 py-2 border rounded">
           <div className="flex justify-between px-3 py-2 border-b-2">
             <p>Price:</p>
             <p>${product.price}</p>
           </div>
-          <div className="flex justify-between px-3 py-2 border-b-2">
+          <div className="flex justify-between px-3 py-2 mb-1 border-b-2">
             <p>Status:</p>
             <p>
               {product.countInStock > 0 ? (
@@ -91,8 +96,13 @@ function Productpage() {
           <div>
             {product.countInStock > 0 && (
               <div className="flex justify-around">
-                <div>
-                  <button type="button">Add to Cart</button>
+                <div className="px-3 py-3">
+                  <button
+                    type="button"
+                    className="text-white bg-sky-800 hover:bg-sky-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             )}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import logger from 'use-reducer-logger'
 import { ProductDet, GetProduct, AllProductReducerState } from '../../types'
+import { Helmet } from 'react-helmet-async'
 import Product from '../../components/Products'
 
 const reducer = (state: AllProductReducerState, action: GetProduct) => {
@@ -50,6 +51,9 @@ const Homepagea = () => {
   return (
     <>
       <h1 className="text-3xl font-bold">Featured Products</h1>
+      <Helmet>
+        <title>hollowmazon</title>
+      </Helmet>
       <div className="products flex flex-wrap justify-center">
         {loading ? (
           <div>loading...</div>
