@@ -11,7 +11,7 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 紀錄開發時遇到的問題和一些重要註記
 
 1. TypeScript 開發參考
-   `https://pjchender.dev/react/guide-typescript-react-tips/`
+   `https://pjchender.dev/react/guide-typescript-react-tips/`  
    `https://pjchender.dev/react/note-react-with-ts/`
 
 2. TailwindCSS theme()變數無法直接塞入 SCSS, 需要使用:root 做轉換
