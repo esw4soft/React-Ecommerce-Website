@@ -4,7 +4,7 @@ import './index.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { HelmetProvider } from 'react-helmet-async'
-import { StorePrivider } from './store'
+import { StorePrivider } from './Store'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

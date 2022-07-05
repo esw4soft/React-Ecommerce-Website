@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useEffect, useState, useReducer } from 'react'
 import axios from 'axios'
 import { ProductDet, GetProduct, ProductReducerState } from '../../types'
@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async'
 import Rating from '../../components/Rating'
 import { Loadingcpm, Messagecpm } from '../../components'
 import { getError } from '../../utils'
+import { Store } from '../../Store'
 import logo from '../../logo.svg'
 
 const reducer = (state: ProductReducerState, action: GetProduct) => {
@@ -46,6 +47,11 @@ function Productpage() {
     }
     fetchData()
   }, [slug])
+
+  const { state, dispatch: btnDispatch } = useContext(Store)
+  const addToCartHandler = () => {
+    btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quntity: 1 } })
+  }
 
   return loading ? (
     <Loadingcpm />
@@ -101,6 +107,7 @@ function Productpage() {
                 <div className="px-3 py-3">
                   <button
                     type="button"
+                    onClick={addToCartHandler}
                     className="text-white bg-sky-800 hover:bg-sky-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                   >
                     Add to Cart
