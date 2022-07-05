@@ -10,7 +10,7 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 紀錄開發時遇到的問題和一些重要註記
 
-1. TypeScript 開發參考
+1. TypeScript 開發參考  
    `https://pjchender.dev/react/guide-typescript-react-tips/`  
    `https://pjchender.dev/react/note-react-with-ts/`
 
