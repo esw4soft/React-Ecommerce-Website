@@ -1,11 +1,12 @@
 import React from 'react'
 import { createContext, useReducer } from 'react'
+import PropTypes from 'prop-types'
 
 export const Store = createContext()
 
 const initialState = {
   cart: {
-    cartItem: [],
+    cartItems: [],
   },
 }
 
@@ -17,7 +18,7 @@ function reducer(state, action) {
         ...state,
         cart: {
           ...state.cart,
-          cartItems: [...state.cary.cartItems, action.payload],
+          cartItems: [...state.cart.cartItems, action.payload],
         },
       }
     default:
@@ -29,4 +30,8 @@ export function StorePrivider(props) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const value = { state, dispatch }
   return <Store.Provider value={value}>{props.children}</Store.Provider>
+}
+
+StorePrivider.propTypes = {
+  children: PropTypes.node.isRequired,
 }
