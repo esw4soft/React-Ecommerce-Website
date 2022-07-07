@@ -1,8 +1,7 @@
 import React from 'react'
 import { createContext, useReducer } from 'react'
-import PropTypes from 'prop-types'
-
-export const Store = createContext()
+import { AppContextInterface } from './types'
+export const Store = createContext<AppContextInterface>()
 
 const initialState = {
   cart: {
@@ -10,7 +9,14 @@ const initialState = {
   },
 }
 
-function reducer(state, action) {
+interface ActionType {
+  type: string
+  payload: any
+}
+interface StateType {
+  cart: any
+}
+function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
     case 'CART_ADD_ITEM':
       // ADD TO CART
@@ -26,12 +32,8 @@ function reducer(state, action) {
   }
 }
 
-export function StorePrivider(props) {
+export function StorePrivider(props: any) {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const value = { state, dispatch }
+  const value: any = { state, dispatch }
   return <Store.Provider value={value}>{props.children}</Store.Provider>
-}
-
-StorePrivider.propTypes = {
-  children: PropTypes.node.isRequired,
 }

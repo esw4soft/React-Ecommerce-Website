@@ -63,7 +63,7 @@ function Productpage() {
         <section className="col-span-2">
           <img className="img-large m-auto" src={logo} alt={product.name} />
         </section>
-        <section className="col-span-2 sm:col-span-1">
+        <section className="px-3 col-span-2 sm:col-span-1">
           <div className="py-2 px-3 border-b-2">
             <Helmet>
               <title>{product.name}</title>
@@ -82,7 +82,7 @@ function Productpage() {
           </div>
         </section>
 
-        <section className="col-span-2 sm:col-span-1 px-3 py-2 border rounded">
+        <section className="col-span-2 sm:col-span-1 px-3 py-2 sm:border rounded">
           <div className="flex justify-between px-3 py-2 border-b-2">
             <p>Price:</p>
             <p>${product.price}</p>

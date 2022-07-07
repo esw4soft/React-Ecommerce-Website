@@ -51,7 +51,9 @@ const Homepagea = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold">Featured Products</h1>
+      <h1 className="text-3xl font-bold text-center sm:text-left">
+        Featured Products
+      </h1>
       <Helmet>
         <title>hollowmazon</title>
       </Helmet>
