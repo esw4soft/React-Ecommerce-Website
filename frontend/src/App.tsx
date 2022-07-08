@@ -4,7 +4,7 @@ import './App.scss'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Homepagea from './views/homepage'
 import Productpage from './views/product'
-import { Store } from './Store.js'
+import { Store } from './Store'
 
 function App() {
   const { state } = useContext(Store)

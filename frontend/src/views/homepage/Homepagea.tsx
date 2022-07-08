@@ -1,6 +1,5 @@
 import React from 'react'
-import { useEffect, useState, useReducer } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import logger from 'use-reducer-logger'
 import { ProductDet, GetProduct, AllProductReducerState } from '../../types'
