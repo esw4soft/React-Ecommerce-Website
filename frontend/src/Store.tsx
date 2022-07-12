@@ -1,19 +1,19 @@
 import React from 'react'
-import { createContext, useReducer } from 'react'
-// import { AppContextInterface } from './types'
+import { Dispatch, createContext, useReducer } from 'react'
+import { GetProduct } from './types'
 
-const initialState = {
+const initialState: StateType = {
   cart: {
     cartItems: [],
   },
 }
 interface AppContextInterface {
-  state: any
-  dispatch: any
+  state: StateType
+  dispatch: Dispatch<Action>
 }
 export const Store = createContext<AppContextInterface>({
   state: initialState,
-  dispatch: 1,
+  dispatch: { type: '', payload: '' },
 })
 
 interface ActionType {
@@ -21,7 +21,7 @@ interface ActionType {
   payload: any
 }
 interface StateType {
-  cart: Record<string, unknown>
+  cart: { cartItems: string[] }
 }
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
