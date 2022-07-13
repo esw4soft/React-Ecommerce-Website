@@ -2,6 +2,7 @@ import {
   GetProduct,
   ProductReducerState,
   AllProductReducerState,
+  AppContextInterface,
 } from './reducer'
 
 interface ProductDet {
@@ -31,4 +32,5 @@ export type {
   GetProduct,
   ProductReducerState,
   AllProductReducerState,
+  AppContextInterface,
 }
