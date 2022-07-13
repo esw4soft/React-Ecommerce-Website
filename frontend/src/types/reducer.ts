@@ -15,4 +15,13 @@ interface ProductReducerState {
   error: string
 }
 
-export type { GetProduct, ProductReducerState, AllProductReducerState }
+interface AppContextInterface {
+  state?: any
+}
+
+export type {
+  GetProduct,
+  ProductReducerState,
+  AllProductReducerState,
+  AppContextInterface,
+}

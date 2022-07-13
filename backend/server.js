@@ -20,7 +20,7 @@ app.get('/api/products/slug/:slug', (req, res) => {
 })
 
 // port 監聽
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5001
 app.listen(port, () => {
   console.log(`server run at http://localhost:${port}`)
 })

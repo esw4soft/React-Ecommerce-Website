@@ -4,13 +4,16 @@ import './index.scss'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { HelmetProvider } from 'react-helmet-async'
+import { StorePrivider } from './Store'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <HelmetProvider>
-      <App />
-    </HelmetProvider>
+    <StorePrivider>
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    </StorePrivider>
   </React.StrictMode>
 )
 

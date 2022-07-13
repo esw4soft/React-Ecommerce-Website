@@ -1,6 +1,5 @@
 import React from 'react'
-import { useEffect, useState, useReducer } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import logger from 'use-reducer-logger'
 import { ProductDet, GetProduct, AllProductReducerState } from '../../types'
@@ -51,7 +50,9 @@ const Homepagea = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold">Featured Products</h1>
+      <h1 className="text-3xl font-bold text-center sm:text-left">
+        Featured Products
+      </h1>
       <Helmet>
         <title>hollowmazon</title>
       </Helmet>
