@@ -36,6 +36,10 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 `https://tailwindcss.com/docs/using-with-preprocessors`
 
+3. Data Store in Typescript
+   store, stata, initialState, dispatch(type, payload), reducer, createContext, useContext, useReducer, children...  
+   這些的 type 可以參考 Store.tsx 檔案
+
 ## Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).

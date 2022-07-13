@@ -1,7 +1,7 @@
 import React from 'react'
-import { Dispatch, createContext, useReducer } from 'react'
-import { GetProduct } from './types'
+import { createContext, useReducer } from 'react'
 
+// createcontext
 const initialState: StateType = {
   cart: {
     cartItems: [],
@@ -9,13 +9,15 @@ const initialState: StateType = {
 }
 interface AppContextInterface {
   state: StateType
-  dispatch: Dispatch<Action>
+  dispatch: any
 }
+
 export const Store = createContext<AppContextInterface>({
   state: initialState,
   dispatch: { type: '', payload: '' },
 })
 
+//  reducer
 interface ActionType {
   type: string
   payload: any
@@ -39,6 +41,7 @@ function reducer(state: StateType, action: ActionType) {
   }
 }
 
+// store component
 interface ChildrenProps {
   children: React.ReactNode
 }
