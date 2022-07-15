@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import { GetProduct, ProductReducerState } from '../../types'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Rating from '../../components/Rating'
 import { Loadingcpm, Messagecpm } from '../../components'
@@ -24,6 +24,7 @@ const reducer = (state: ProductReducerState, action: GetProduct) => {
 }
 
 function Productpage() {
+  const navigate = useNavigate()
   const params = useParams()
   const { slug } = params
 
@@ -61,6 +62,7 @@ function Productpage() {
       return
     }
     btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
+    navigate('/cart')
   }
 
   return loading ? (

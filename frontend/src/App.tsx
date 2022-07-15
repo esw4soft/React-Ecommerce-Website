@@ -4,6 +4,7 @@ import './App.scss'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Homepagea from './views/homepage'
 import Productpage from './views/product'
+import Cartpage from './views/cart'
 import { Store } from './Store'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <main className="py-4 container mx-auto">
           <Routes>
             <Route path="/products/:slug" element={<Productpage />} />
+            <Route path="/cart" element={<Cartpage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>
