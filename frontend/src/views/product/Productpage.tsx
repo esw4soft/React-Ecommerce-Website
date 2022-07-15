@@ -49,8 +49,18 @@ function Productpage() {
   }, [slug])
 
   const { state, dispatch: btnDispatch } = useContext(Store)
-  const addToCartHandler = () => {
-    btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quntity: 1 } })
+  const { cart } = state
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find(
+      (item) => item.numberk === product.numberk
+    )
+    const quantity = existItem ? existItem.quantity + 1 : 1
+    const { data } = await axios.get(`/api/products/${product.numberk}`)
+    if (data.countInStock < quantity) {
+      window.alert('sorry, product is out of stock')
+      return
+    }
+    btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
   }
 
   return loading ? (
