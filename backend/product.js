@@ -1,7 +1,7 @@
 const product = {
   products: [
     {
-      numberk: 1,
+      numberk: '1',
       name: 'Nike Slimgggg shittttt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
@@ -14,7 +14,7 @@ const product = {
       description: 'high quality shirt',
     },
     {
-      numberk: 2,
+      numberk: '2',
       name: 'Adidas Fit Shirt',
       slug: 'adidas-fit-shirt',
       category: 'Shirts',
@@ -27,7 +27,7 @@ const product = {
       description: 'high quality product',
     },
     {
-      numberk: 3,
+      numberk: '3',
       name: 'Nike Slim Pant',
       slug: 'nike-slim-pant',
       category: 'Pants',
@@ -40,7 +40,7 @@ const product = {
       description: 'high quality product',
     },
     {
-      numberk: 4,
+      numberk: '4',
       name: 'Adidas Fit Pant',
       slug: 'adidas-fit-pant',
       category: 'Pants',

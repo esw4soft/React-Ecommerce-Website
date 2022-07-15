@@ -6,7 +6,7 @@ import {
 } from './reducer'
 
 interface ProductDet {
-  numberk: number
+  numberk: string
   name: string
   slug: string
   category: string
