@@ -19,6 +19,17 @@ app.get('/api/products/slug/:slug', (req, res) => {
   
 })
 
+// 購物車
+app.get('/api/products/:id', (req, res) => {
+  const product = data.products.find((x) => x.numberk === req.params.id)
+  if (product) {
+    res.send(product)
+  } else {
+    res.status(404).send({ message: 'Product Not Found' })
+  }
+  
+})
+
 // port 監聽
 const port = process.env.PORT || 5001
 app.listen(port, () => {

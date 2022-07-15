@@ -21,7 +21,7 @@ function App() {
               Cart
               {cart.cartItems.length > 0 && (
                 <span className="bg-red-700 text-red-100 text-xs font-semibold ml-1 px-1.5 rounded-full dark:bg-red-900 dark:text-red-200">
-                  {cart.cartItems.length}
+                  {cart.cartItems.reduce((pre, item) => pre + item.quantity, 0)}
                 </span>
               )}
             </Link>
