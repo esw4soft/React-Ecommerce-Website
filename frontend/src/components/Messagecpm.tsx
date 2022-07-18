@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface MessageType {
-  children: string
+  children: React.ReactNode
 }
 
 export default function Messagecpm(props: MessageType) {
@@ -23,7 +23,7 @@ export default function Messagecpm(props: MessageType) {
         ></path>
       </svg>
       <div>
-        <span className="font-medium">Danger alert! </span>
+        <span className="font-medium">alert! </span>
         {props.children}
       </div>
     </div>
