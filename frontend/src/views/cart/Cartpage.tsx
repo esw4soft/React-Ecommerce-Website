@@ -17,9 +17,9 @@ function Cartpage() {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <h1>Shopping Cart</h1>
+      <h1 className="text-center sm:text-left">Shopping Cart</h1>
       <div className="grid grid-cols-3 gap-4 mt-6">
-        <div className="col-span-2">
+        <div className="col-span-3 sm:col-span-2 ">
           {cartItems.length === 0 ? (
             <Messagecpm>
               Cart is empty. <Link to="/">Go shopping</Link>
@@ -27,7 +27,7 @@ function Cartpage() {
           ) : (
             <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                {/* <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="py-3 px-6">
                       <span className="sr-only">Image</span>
@@ -45,12 +45,12 @@ function Cartpage() {
                       Action
                     </th>
                   </tr>
-                </thead>
+                </thead> */}
                 <tbody>
                   {cartItems.map((item) => (
                     <tr
                       key={item.numberk}
-                      className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                      className=" border-b dark:bg-gray-800 dark:border-gray-700 bg-gray-50 dark:hover:bg-gray-600"
                     >
                       <td className="p-4 w-32">
                         <img src={logo} alt={item.name} />
@@ -125,7 +125,7 @@ function Cartpage() {
             </div>
           )}
         </div>
-        <div className="col-span-1">
+        <div className="col-span-3 sm:col-span-1">
           <section className="col-span-2 sm:col-span-1 px-3 py-2 sm:border rounded-md shadow-md">
             <div className="flex justify-between px-3 py-2 border-b-2">
               <h2 className="font-bold text-2xl">
