@@ -50,15 +50,15 @@ function Cartpage() {
                   {cartItems.map((item) => (
                     <tr
                       key={item.numberk}
-                      className=" border-b dark:bg-gray-800 dark:border-gray-700 bg-gray-50 dark:hover:bg-gray-600"
+                      className="grid grid-cols-4 sm:grid-cols-9 border-b dark:bg-gray-800 dark:border-gray-700 bg-gray-50 dark:hover:bg-gray-600"
                     >
-                      <td className="p-4 w-32">
+                      <td className="col-span-2 sm:col-span-2 p-2 m-auto w-32">
                         <img src={logo} alt={item.name} />
                       </td>
-                      <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
+                      <td className="col-span-2 sm:col-span-2 py-3 px-3 self-center font-semibold text-gray-900 dark:text-white">
                         <Link to={`/product/${item.slug}`}>{item.name}</Link>
                       </td>
-                      <td className="py-4 px-6">
+                      <td className="col-span-2 sm:col-span-3 py-3 px-3 m-auto">
                         <div className="flex items-center space-x-3">
                           <button
                             className="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white rounded-full border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -110,10 +110,10 @@ function Cartpage() {
                           </button>
                         </div>
                       </td>
-                      <td className="py-4 px-6 font-semibold text-gray-900 dark:text-white">
-                        {item.price}
+                      <td className="sm:col-span-1 py-3 px-3 m-auto font-semibold text-gray-900 dark:text-white">
+                        ${item.price}
                       </td>
-                      <td className="py-4 px-6">
+                      <td className="sm:col-span-1 py-3 px-3 m-auto">
                         <a href="#" className=" hover:text-red-700">
                           <MdDeleteForever className="text-center text-2xl" />
                         </a>
@@ -128,7 +128,7 @@ function Cartpage() {
         <div className="col-span-3 sm:col-span-1">
           <section className="col-span-2 sm:col-span-1 px-3 py-2 sm:border rounded-md shadow-md">
             <div className="flex justify-between px-3 py-2 border-b-2">
-              <h2 className="font-bold text-2xl">
+              <h2 className="m-auto sm:m-0 font-bold text-2xl">
                 Subtotal (
                 {cartItems.reduce((pre, item) => pre + item.quantity, 0)} item)
                 : $
