@@ -14,7 +14,7 @@ function Products(props: ProductsProps) {
   return (
     <div
       key={product.numberk}
-      className="product border m-4 bg-white rounded-lg border-gray-200 shadow-md"
+      className="product m-4 rounded-lg border border-gray-200 bg-white shadow-md"
     >
       <Link to={`/products/${product.slug}`}>
         <img className="w-full max-w-sm" src={logo} alt="product.name" />
@@ -29,7 +29,7 @@ function Products(props: ProductsProps) {
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
           ${product.price}
         </p>
-        <button className='className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-sky-500 rounded-lg hover:bg-sky-600 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"'>
+        <button className='className="inline-flex dark:focus:ring-blue-800" items-center rounded-lg bg-sky-500 py-2 px-3 text-center text-sm font-medium text-white hover:bg-sky-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700'>
           add to cart
         </button>
       </div>

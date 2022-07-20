@@ -13,22 +13,22 @@ function App() {
   return (
     <BrowserRouter>
       <div className="min-h-[95vh]">
-        <header className="flex justify-start p-4 bg-sky-900">
+        <header className="flex justify-start bg-sky-900 p-4">
           <nav className="container mx-auto ">
-            <Link to="/" className="font-bold bg-sky-900 text-white text-xl">
-              hollowmazon
+            <Link to="/" className="bg-sky-900 text-xl font-bold text-white">
+              lowmazon
             </Link>
-            <Link to="/cart" className="text-white ml-5">
+            <Link to="/cart" className="ml-5 text-white">
               Cart
               {cart.cartItems.length > 0 && (
-                <span className="bg-red-700 text-red-100 text-xs font-semibold ml-1 px-1.5 rounded-full dark:bg-red-900 dark:text-red-200">
+                <span className="ml-1 rounded-full bg-red-700 px-1.5 text-xs font-semibold text-red-100 dark:bg-red-900 dark:text-red-200">
                   {cart.cartItems.reduce((pre, item) => pre + item.quantity, 0)}
                 </span>
               )}
             </Link>
           </nav>
         </header>
-        <main className="py-4 container mx-auto">
+        <main className="container mx-auto py-4">
           <Routes>
             <Route path="/products/:slug" element={<Productpage />} />
             <Route path="/cart" element={<Cartpage />} />

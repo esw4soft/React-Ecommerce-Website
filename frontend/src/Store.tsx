@@ -40,8 +40,8 @@ function reducer(state: StateType, action: ActionType) {
       // 如果沒有重複 就把新的加入舊的
       const cartItems = existItem
         ? state.cart.cartItems.map((item) =>
-          item.numberk === existItem.numberk ? newItem : item
-        )
+            item.numberk === existItem.numberk ? newItem : item
+          )
         : [...state.cart.cartItems, newItem]
       return { ...state, cart: { ...state.cart, cartItems } }
 

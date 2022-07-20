@@ -10,7 +10,7 @@ export default function Messagecpm(props: MessageType) {
   return (
     <div className={msgcode === 0 ? 'msgerror' : 'msghint'} role="alert">
       <svg
-        className="inline flex-shrink-0 mr-3 w-5 h-5"
+        className="mr-3 inline h-5 w-5 flex-shrink-0"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
