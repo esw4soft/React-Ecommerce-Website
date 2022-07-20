@@ -6,12 +6,23 @@ import { Messagecpm } from '../../components'
 import { Link } from 'react-router-dom'
 import logo from '../../logo.svg'
 import { MdDeleteForever } from 'react-icons/md'
+import axios from 'axios'
 
 function Cartpage() {
   const { state, dispatch: btnDispatch } = useContext(Store)
   const {
     cart: { cartItems },
   } = state
+
+  const updataCartHandler = async (item: any, quantity: number) => {
+    const { data } = await axios.get(`/api/products/${item.numberk}`)
+
+    if (data.countInStock < quantity) {
+      window.alert('sorry, product is out of stock')
+      return
+    }
+    btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } })
+  }
   return (
     <div>
       <Helmet>
@@ -67,6 +78,9 @@ function Cartpage() {
                             className="inline-flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                             type="button"
                             disabled={item.quantity === 1}
+                            onClick={() =>
+                              updataCartHandler(item, item.quantity - 1)
+                            }
                           >
                             <span className="sr-only">Quantity button</span>
                             <svg
@@ -95,6 +109,9 @@ function Cartpage() {
                             className="inline-flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                             type="button"
                             disabled={item.quantity === item.countInStock}
+                            onClick={() =>
+                              updataCartHandler(item, item.quantity + 1)
+                            }
                           >
                             <span className="sr-only">Quantity button</span>
                             <svg
