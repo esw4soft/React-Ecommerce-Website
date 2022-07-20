@@ -60,7 +60,7 @@ const Homepagea = () => {
         {loading ? (
           <Loadingcpm />
         ) : error ? (
-          <Messagecpm>{error}</Messagecpm>
+          <Messagecpm msgcode={0}>{error}</Messagecpm>
         ) : (
           // <div>{error}</div>
           products.map((product: ProductDet) => (
