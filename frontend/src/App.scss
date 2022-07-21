@@ -19,7 +19,7 @@
     box-shadow: var(--bsx);
   }
 
-  .rating>span {
+  .rating > span {
     color: var(--starColor);
   }
 }
@@ -33,6 +33,16 @@
     @apply text-xl;
   }
 }
+
+.msgerror {
+  @apply m-auto mb-4 flex w-4/5 rounded-lg bg-red-100 p-4 text-sm text-red-700 sm:w-full;
+}
+
+.msghint {
+  @apply m-auto mb-4 flex w-4/5 rounded-lg bg-blue-100 p-4 text-sm text-blue-600 sm:w-full;
+}
+
+// ////////////////////////
 
 .App {
   text-align: center;

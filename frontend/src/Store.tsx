@@ -1,10 +1,12 @@
 import React from 'react'
 import { createContext, useReducer } from 'react'
-
+import { CartDet } from './types'
 // createcontext
 const initialState: StateType = {
   cart: {
-    cartItems: [],
+    cartItems: localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems') || '')
+      : [],
   },
 }
 interface AppContextInterface {
@@ -23,7 +25,7 @@ interface ActionType {
   payload: any
 }
 interface StateType {
-  cart: { cartItems: any[] }
+  cart: { cartItems: CartDet[] }
 }
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
@@ -40,9 +42,10 @@ function reducer(state: StateType, action: ActionType) {
       // 如果沒有重複 就把新的加入舊的
       const cartItems = existItem
         ? state.cart.cartItems.map((item) =>
-          item.numberk === existItem.numberk ? newItem : item
-        )
+            item.numberk === existItem.numberk ? newItem : item
+          )
         : [...state.cart.cartItems, newItem]
+      localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }
 
       // return {
@@ -52,6 +55,13 @@ function reducer(state: StateType, action: ActionType) {
       //     cartItems: [...state.cart.cartItems, action.payload],
       //   },
       // }
+    }
+    case 'CART_REMOVE_ITEM': {
+      const cartItems = state.cart.cartItems.filter(
+        (item) => item.numberk !== action.payload.numberk
+      )
+      localStorage.setItem('cartItems', JSON.stringify(cartItems))
+      return { ...state, cart: { ...state.cart, cartItems } }
     }
     default:
       return state
