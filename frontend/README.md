@@ -22,8 +22,7 @@
    cartpage 頁面畫面  
    cartpage 頁面畫面 RWD  
    routing, navigate  
-   購物車按鈕: 增加減少, 確認購買, 刪除, 添加到購物車
-
-   \*store type 整理
+   購物車按鈕: 增加減少, 確認購買, 刪除, 添加到購物車  
+   按鈕上 type
 
 紀錄開發時遇到的問題和一些重要註記

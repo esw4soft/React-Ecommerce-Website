@@ -16,6 +16,7 @@ interface ProductDet {
   rating: number
   numReviews: number
   description: string
+  quantity: number
 
   loading: boolean
   error: string

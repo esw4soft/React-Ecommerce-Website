@@ -3,18 +3,20 @@ import { useContext } from 'react'
 import { Store } from '../../Store'
 import { Helmet } from 'react-helmet-async'
 import { Messagecpm } from '../../components'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import logo from '../../logo.svg'
 import { MdDeleteForever } from 'react-icons/md'
 import axios from 'axios'
 import { CartDet } from '../../types'
 
 function Cartpage() {
+  const navigate = useNavigate()
   const { state, dispatch: btnDispatch } = useContext(Store)
   const {
     cart: { cartItems },
   } = state
 
+  // 新增購物車內商品
   const updataCartHandler = async (item: CartDet, quantity: number) => {
     const { data } = await axios.get(`/api/products/${item.numberk}`)
 
@@ -24,6 +26,18 @@ function Cartpage() {
     }
     btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } })
   }
+
+  // 刪除購物車內商品
+  const removeCartHandler = (item: CartDet) => {
+    btnDispatch({ type: 'CART_REMOVE_ITEM', payload: item })
+  }
+
+  // 檢查項目
+  const checkoutHandler = () => {
+    // 如果通過認證就進入shipping頁
+    navigate('/signin?redirect=/shipping')
+  }
+
   return (
     <div>
       <Helmet>
@@ -135,9 +149,13 @@ function Cartpage() {
                         ${item.price}
                       </td>
                       <td className="m-auto py-3 px-3 sm:col-span-1">
-                        <a href="#" className=" hover:text-red-700">
+                        <button
+                          type="button"
+                          className=" hover:text-red-700"
+                          onClick={() => removeCartHandler(item)}
+                        >
                           <MdDeleteForever className="text-center text-2xl" />
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -166,6 +184,7 @@ function Cartpage() {
                     type="button"
                     className="text-md mr-2 mb-2 flex-grow rounded-lg bg-sky-800 py-2 font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     disabled={cartItems.length === 0}
+                    onClick={checkoutHandler}
                   >
                     Proceed to Checkout
                   </button>
