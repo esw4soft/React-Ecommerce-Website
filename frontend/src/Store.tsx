@@ -1,6 +1,6 @@
 import React from 'react'
 import { createContext, useReducer } from 'react'
-
+import { CartDet } from './types'
 // createcontext
 const initialState: StateType = {
   cart: {
@@ -23,7 +23,7 @@ interface ActionType {
   payload: any
 }
 interface StateType {
-  cart: { cartItems: any[] }
+  cart: { cartItems: CartDet[] }
 }
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {

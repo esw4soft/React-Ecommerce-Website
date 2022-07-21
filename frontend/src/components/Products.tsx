@@ -1,12 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../logo.svg'
-import { ProductDet } from '../types'
+import { ProductsProps } from '../types'
 import Rating from '../components/Rating'
-
-interface ProductsProps {
-  product: ProductDet
-}
 
 function Products(props: ProductsProps) {
   const { product } = props

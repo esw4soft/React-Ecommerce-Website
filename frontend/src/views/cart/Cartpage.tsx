@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import logo from '../../logo.svg'
 import { MdDeleteForever } from 'react-icons/md'
 import axios from 'axios'
+import { CartDet } from '../../types'
 
 function Cartpage() {
   const { state, dispatch: btnDispatch } = useContext(Store)
@@ -14,7 +15,7 @@ function Cartpage() {
     cart: { cartItems },
   } = state
 
-  const updataCartHandler = async (item: any, quantity: number) => {
+  const updataCartHandler = async (item: CartDet, quantity: number) => {
     const { data } = await axios.get(`/api/products/${item.numberk}`)
 
     if (data.countInStock < quantity) {
