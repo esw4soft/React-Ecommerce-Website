@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useEffect, useReducer } from 'react'
 import axios from 'axios'
 import { GetProduct, ProductReducerState } from '../../types'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Rating from '../../components/Rating'
 import { Loadingcpm, Messagecpm } from '../../components'
@@ -24,6 +24,7 @@ const reducer = (state: ProductReducerState, action: GetProduct) => {
 }
 
 function Productpage() {
+  const navigate = useNavigate()
   const params = useParams()
   const { slug } = params
 
@@ -61,51 +62,52 @@ function Productpage() {
       return
     }
     btnDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } })
+    navigate('/cart')
   }
 
   return loading ? (
     <Loadingcpm />
   ) : error ? (
-    <Messagecpm>{error}</Messagecpm>
+    <Messagecpm msgcode={0}>{error}</Messagecpm>
   ) : (
     <>
-      <div className="grid grid-cols-1 gap-8 items-start sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 items-start gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <section className="col-span-2">
           <img className="img-large m-auto" src={logo} alt={product.name} />
         </section>
-        <section className="px-3 col-span-2 sm:col-span-1">
-          <div className="py-2 px-3 border-b-2">
+        <section className="col-span-2 px-3 sm:col-span-1">
+          <div className="border-b-2 py-2 px-3">
             <Helmet>
               <title>{product.name}</title>
             </Helmet>
             <h1>{product.name}</h1>
           </div>
-          <div className="py-2 px-3 border-b-2">
+          <div className="border-b-2 py-2 px-3">
             <Rating
               rating={product.rating}
               numReviews={product.numReviews}
             ></Rating>
           </div>
-          <div className="py-2 px-3 border-b-2">Price : ${product.price}</div>
+          <div className="border-b-2 py-2 px-3">Price : ${product.price}</div>
           <div className="py-2 px-3">
             Description: <p>{product.description}</p>
           </div>
         </section>
 
-        <section className="col-span-2 sm:col-span-1 px-3 py-2 sm:border rounded">
-          <div className="flex justify-between px-3 py-2 border-b-2">
+        <section className="col-span-2 rounded px-3 py-2 sm:col-span-1 sm:border">
+          <div className="flex justify-between border-b-2 px-3 py-2">
             <p>Price:</p>
             <p>${product.price}</p>
           </div>
-          <div className="flex justify-between px-3 py-2 mb-1 border-b-2">
+          <div className="mb-1 flex justify-between border-b-2 px-3 py-2">
             <p>Status:</p>
             <p>
               {product.countInStock > 0 ? (
-                <span className="bg-green-100 text-green-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
+                <span className="rounded bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800 dark:bg-green-200 dark:text-green-900">
                   In Stock
                 </span>
               ) : (
-                <span className="bg-red-100 text-red-800 text-sm font-medium px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">
+                <span className="rounded bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800 dark:bg-red-200 dark:text-red-900">
                   Unavailable
                 </span>
               )}
@@ -118,7 +120,7 @@ function Productpage() {
                   <button
                     type="button"
                     onClick={addToCartHandler}
-                    className="text-white bg-sky-800 hover:bg-sky-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    className="mr-2 mb-2 rounded-lg bg-sky-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Add to Cart
                   </button>

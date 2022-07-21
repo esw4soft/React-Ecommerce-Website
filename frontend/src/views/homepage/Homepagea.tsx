@@ -50,7 +50,7 @@ const Homepagea = () => {
 
   return (
     <>
-      <h1 className="text-3xl font-bold text-center sm:text-left">
+      <h1 className="text-center text-3xl font-bold sm:text-left">
         Featured Products
       </h1>
       <Helmet>
@@ -60,7 +60,7 @@ const Homepagea = () => {
         {loading ? (
           <Loadingcpm />
         ) : error ? (
-          <Messagecpm>{error}</Messagecpm>
+          <Messagecpm msgcode={0}>{error}</Messagecpm>
         ) : (
           // <div>{error}</div>
           products.map((product: ProductDet) => (
