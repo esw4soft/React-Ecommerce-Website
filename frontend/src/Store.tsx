@@ -1,6 +1,6 @@
 import React from 'react'
 import { createContext, useReducer } from 'react'
-import { CartDet } from './types'
+import { CartDet, ChildrenProps } from './types'
 // createcontext
 const initialState: StateType = {
   cart: {
@@ -69,10 +69,6 @@ function reducer(state: StateType, action: ActionType) {
 }
 
 // store component
-interface ChildrenProps {
-  children: React.ReactNode
-}
-
 export function StorePrivider(props: ChildrenProps) {
   const [state, dispatch] = useReducer(reducer, initialState)
   const value = { state, dispatch }
