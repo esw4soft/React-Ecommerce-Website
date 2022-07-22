@@ -4,6 +4,8 @@ import {
   AllProductReducerState,
 } from './reducer'
 
+import { ChildrenProps } from './preset'
+
 interface ProductDet {
   numberk: string
   name: string
@@ -52,4 +54,5 @@ export type {
   ProductReducerState,
   AllProductReducerState,
   CartDet,
+  ChildrenProps,
 }
