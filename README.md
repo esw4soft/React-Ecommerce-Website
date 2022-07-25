@@ -40,6 +40,8 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
    store, state, initialState, dispatch(type, payload), reducer, createContext, useContext, useReducer, children...  
    這些的 type 可以參考 Store.tsx 檔案
 
+4. 使用 useLocation 搭配 URLSearchParams 做登入轉址
+
 ## Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).

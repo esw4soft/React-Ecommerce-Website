@@ -5,6 +5,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import Homepagea from './views/homepage'
 import Productpage from './views/product'
 import Cartpage from './views/cart'
+import Signinpage from './views/signin'
 import { Store } from './Store'
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/products/:slug" element={<Productpage />} />
             <Route path="/cart" element={<Cartpage />} />
+            <Route path="/signin" element={<Signinpage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>
