@@ -1,5 +1,13 @@
-interface Productdet {
-  numberk: number
+import {
+  GetProduct,
+  ProductReducerState,
+  AllProductReducerState,
+} from './reducer'
+
+import { ChildrenProps } from './preset'
+
+interface ProductDet {
+  numberk: string
   name: string
   slug: string
   category: string
@@ -10,8 +18,41 @@ interface Productdet {
   rating: number
   numReviews: number
   description: string
+  quantity: number
+
+  loading: boolean
+  error: string
+  products: []
 }
 
+interface CartDet {
+  numberk: string
+  name: string
+  slug: string
+  category: string
+  image: string
+  price: number
+  countInStock: number
+  brand: string
+  rating: number
+  numReviews: number
+  description: string
+  quantity: number
+}
+
+interface ProductsProps {
+  product: ProductDet
+}
 export interface Product {
-  products: [Productdet, Productdet, Productdet, Productdet]
+  products: [ProductDet, ProductDet, ProductDet, ProductDet]
+}
+
+export type {
+  ProductDet,
+  ProductsProps,
+  GetProduct,
+  ProductReducerState,
+  AllProductReducerState,
+  CartDet,
+  ChildrenProps,
 }

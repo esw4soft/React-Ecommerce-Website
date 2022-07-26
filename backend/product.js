@@ -1,8 +1,8 @@
 const product = {
   products: [
     {
-      numberk: 1,
-      name: 'Nike Slim shirt',
+      numberk: '1',
+      name: 'Nike Slimgggg shittttt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
       image: '/images/p1.jpg',
@@ -14,7 +14,7 @@ const product = {
       description: 'high quality shirt',
     },
     {
-      numberk: 2,
+      numberk: '2',
       name: 'Adidas Fit Shirt',
       slug: 'adidas-fit-shirt',
       category: 'Shirts',
@@ -22,12 +22,12 @@ const product = {
       price: 250,
       countInStock: 20,
       brand: 'Adidas',
-      rating: 4.0,
+      rating: 3.0,
       numReviews: 10,
       description: 'high quality product',
     },
     {
-      numberk: 3,
+      numberk: '3',
       name: 'Nike Slim Pant',
       slug: 'nike-slim-pant',
       category: 'Pants',
@@ -35,12 +35,12 @@ const product = {
       price: 25,
       countInStock: 15,
       brand: 'Nike',
-      rating: 4.5,
+      rating: 2.5,
       numReviews: 14,
       description: 'high quality product',
     },
     {
-      numberk: 4,
+      numberk: '4',
       name: 'Adidas Fit Pant',
       slug: 'adidas-fit-pant',
       category: 'Pants',
@@ -48,7 +48,7 @@ const product = {
       price: 65,
       countInStock: 5,
       brand: 'Puma',
-      rating: 4.5,
+      rating: 5,
       numReviews: 10,
       description: 'high quality product',
     },

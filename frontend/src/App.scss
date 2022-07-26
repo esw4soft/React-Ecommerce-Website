@@ -2,6 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --clw: theme(colors.white);
+  --bdl: theme(borderRadius.lg);
+  --sp6: theme(spacing.6);
+  --bsx: theme(boxShadow.xl);
+
+  --starColor: theme(colors.yellow.400);
+}
+
+@layer components {
+  .card {
+    background-color: var(--clw);
+    border-radius: var(--bdl);
+    padding: var(--sp6);
+    box-shadow: var(--bsx);
+  }
+
+  .rating > span {
+    color: var(--starColor);
+  }
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+}
+
+.msgerror {
+  @apply m-auto mb-4 flex w-4/5 rounded-lg bg-red-100 p-4 text-sm text-red-700 sm:w-full;
+}
+
+.msghint {
+  @apply m-auto mb-4 flex w-4/5 rounded-lg bg-blue-100 p-4 text-sm text-blue-600 sm:w-full;
+}
+
+// ////////////////////////
+
 .App {
   text-align: center;
 }
@@ -18,7 +60,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  // background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
