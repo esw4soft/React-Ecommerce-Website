@@ -16,9 +16,9 @@ function Products(props: ProductsProps) {
 
   // 新增商品
   const addToCartHandler = async (item: CartDet) => {
-    const existItem = cartItems.find((item) => item.numberk === product.numberk)
+    const existItem = cartItems.find((item) => item._id === product._id)
     const quantity = existItem ? existItem.quantity + 1 : 1
-    const { data } = await axios.get(`/api/products/${item.numberk}`)
+    const { data } = await axios.get(`/api/products/${item._id}`)
 
     if (data.countInStock < quantity) {
       window.alert('sorry, product is out of stock')
@@ -29,7 +29,7 @@ function Products(props: ProductsProps) {
 
   return (
     <div
-      key={product.numberk}
+      key={product._id}
       className="product m-4 rounded-lg border border-gray-200 bg-white shadow-md"
     >
       <Link to={`/products/${product.slug}`}>

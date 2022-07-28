@@ -35,14 +35,14 @@ function reducer(state: StateType, action: ActionType) {
 
       // 判斷購物車裡東西有沒有新加入的商品
       const existItem = state.cart.cartItems.find(
-        (item) => item.numberk === newItem.numberk
+        (item) => item._id === newItem._id
       )
 
       // 如果有 迴圈購物車商品 >> 再判斷一次id 有就迴圈新的覆蓋舊的 沒有就迴圈舊的
       // 如果沒有重複 就把新的加入舊的
       const cartItems = existItem
         ? state.cart.cartItems.map((item) =>
-            item.numberk === existItem.numberk ? newItem : item
+            item._id === existItem._id ? newItem : item
           )
         : [...state.cart.cartItems, newItem]
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
@@ -58,7 +58,7 @@ function reducer(state: StateType, action: ActionType) {
     }
     case 'CART_REMOVE_ITEM': {
       const cartItems = state.cart.cartItems.filter(
-        (item) => item.numberk !== action.payload.numberk
+        (item) => item._id !== action.payload._id
       )
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }

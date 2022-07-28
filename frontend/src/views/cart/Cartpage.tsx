@@ -18,7 +18,7 @@ function Cartpage() {
 
   // 新增購物車內商品
   const updataCartHandler = async (item: CartDet, quantity: number) => {
-    const { data } = await axios.get(`/api/products/${item.numberk}`)
+    const { data } = await axios.get(`/api/products/${item._id}`)
 
     if (data.countInStock < quantity) {
       window.alert('sorry, product is out of stock')
@@ -78,7 +78,7 @@ function Cartpage() {
                 <tbody>
                   {cartItems.map((item) => (
                     <tr
-                      key={item.numberk}
+                      key={item._id}
                       className="grid grid-cols-4 border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600 sm:grid-cols-9"
                     >
                       <td className="col-span-2 m-auto w-32 p-2 sm:col-span-2">
