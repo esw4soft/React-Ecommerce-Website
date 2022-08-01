@@ -15,5 +15,8 @@
    3. 創建一個取得資料庫資料的 route & 取出資料做各種處理(單一商品,購物車)
    4. 刪除原本 server.js 裡從本地取得的資料函式
    5. id 名稱修改(numberk>>\_id)
+6. 登入驗證
+   使用 `npm install express-async-handler jsonwebtoken`  
+   登入後給 token
 
 紀錄開發時遇到的問題和一些重要註記
