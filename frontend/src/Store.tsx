@@ -26,6 +26,7 @@ interface ActionType {
 }
 interface StateType {
   cart: { cartItems: CartDet[] }
+  userInfo?: any
 }
 function reducer(state: StateType, action: ActionType) {
   switch (action.type) {
@@ -42,8 +43,8 @@ function reducer(state: StateType, action: ActionType) {
       // 如果沒有重複 就把新的加入舊的
       const cartItems = existItem
         ? state.cart.cartItems.map((item) =>
-            item._id === existItem._id ? newItem : item
-          )
+          item._id === existItem._id ? newItem : item
+        )
         : [...state.cart.cartItems, newItem]
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }
@@ -62,6 +63,9 @@ function reducer(state: StateType, action: ActionType) {
       )
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }
+    }
+    case 'USER_SIGNIN': {
+      return { ...state, userInfo: action.payload }
     }
     default:
       return state

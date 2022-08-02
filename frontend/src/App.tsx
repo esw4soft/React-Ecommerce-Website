@@ -10,7 +10,7 @@ import { Store } from './Store'
 
 function App() {
   const { state } = useContext(Store)
-  const { cart } = state
+  const { cart, userInfo } = state
   return (
     <BrowserRouter>
       <div className="min-h-[95vh]">

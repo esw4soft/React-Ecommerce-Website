@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { Store } from '../../Store'
 
 const Signinpage = () => {
+  const navigate = useNavigate()
   const { search } = useLocation()
   const redirectInUrl = new URLSearchParams(search).get('redirect')
   const redirect = redirectInUrl ? redirectInUrl : '/'
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const { state, dispatch: btnDispatch } = useContext(Store)
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -18,9 +22,11 @@ const Signinpage = () => {
         email,
         password,
       })
-      console.log(data)
+      btnDispatch({ type: 'USER_SIGNIN', payload: data })
+      localStorage.setItem('userInfo', JSON.stringify(data))
+      navigate(redirect || '/')
     } catch (err) {
-      console.log(err)
+      alert('invalid email or password')
     }
   }
   return (
