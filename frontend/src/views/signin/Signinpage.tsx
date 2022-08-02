@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useLocation } from 'react-router-dom'
+import axios from 'axios'
 
 const Signinpage = () => {
   const { search } = useLocation()
   const redirectInUrl = new URLSearchParams(search).get('redirect')
   const redirect = redirectInUrl ? redirectInUrl : '/'
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
+  const submitHandler = async (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.post('/api/users/signin', {
+        email,
+        password,
+      })
+      console.log(data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <div className="container mx-auto px-5 sm:w-2/5">
       <Helmet>
         <title>Sign In</title>
       </Helmet>
       <h1 className="mb-6">Sign In</h1>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="mb-6">
           <label
             htmlFor="email"
@@ -26,6 +43,7 @@ const Signinpage = () => {
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             placeholder="Your email"
             required
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="mb-6">
@@ -40,6 +58,7 @@ const Signinpage = () => {
             id="password"
             className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
             required
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
         <div className="mb-6 flex items-start">

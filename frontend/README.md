@@ -25,6 +25,11 @@
    購物車按鈕: 增加減少, 確認購買, 刪除, 添加到購物車  
    按鈕上 type
 5. signinPage 製作  
-   signinpage 頁面畫面 RWD
+   signinpage 頁面畫面 RWD  
+   登入送出按鈕 function reducer  
+   存 token 在 localstorage  
+   登入後 redirect 頁面  
+   登入時 navbar 顯示使用者+ 下拉選單  
+   提示訊息美化
 
 紀錄開發時遇到的問題和一些重要註記
