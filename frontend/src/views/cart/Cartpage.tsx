@@ -55,8 +55,8 @@ function Cartpage() {
             </Messagecpm>
           ) : (
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-              <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
-                {/* <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <table className="w-full text-left text-sm text-gray-500 ">
+                {/* <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 ">
                   <tr>
                     <th scope="col" className="py-3 px-6">
                       <span className="sr-only">Image</span>
@@ -79,18 +79,18 @@ function Cartpage() {
                   {cartItems.map((item) => (
                     <tr
                       key={item._id}
-                      className="grid grid-cols-4 border-b bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600 sm:grid-cols-9"
+                      className="grid grid-cols-4 border-b bg-gray-50 sm:grid-cols-9"
                     >
                       <td className="col-span-2 m-auto w-32 p-2 sm:col-span-2">
                         <img src={logo} alt={item.name} />
                       </td>
-                      <td className="col-span-2 self-center py-3 px-3 font-semibold text-gray-900 dark:text-white sm:col-span-2">
+                      <td className="col-span-2 self-center py-3 px-3 font-semibold text-gray-900 sm:col-span-2">
                         <Link to={`/product/${item.slug}`}>{item.name}</Link>
                       </td>
                       <td className="col-span-2 m-auto py-3 px-3 sm:col-span-3">
                         <div className="flex items-center space-x-3">
                           <button
-                            className="inline-flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                            className="inline-flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
                             type="button"
                             disabled={item.quantity === 1}
                             onClick={() =>
@@ -115,13 +115,13 @@ function Cartpage() {
                           <div>
                             <span
                               id="first_product"
-                              className="block w-14 rounded-lg border border-gray-300 bg-gray-50 px-2.5 py-1 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+                              className="block w-14 rounded-lg border border-gray-300 bg-gray-50 px-2.5 py-1 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 "
                             >
                               {item.quantity}
                             </span>
                           </div>
                           <button
-                            className="inline-flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                            className="inline-flex items-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 "
                             type="button"
                             disabled={item.quantity === item.countInStock}
                             onClick={() =>
@@ -145,7 +145,7 @@ function Cartpage() {
                           </button>
                         </div>
                       </td>
-                      <td className="m-auto py-3 px-3 font-semibold text-gray-900 dark:text-white sm:col-span-1">
+                      <td className="m-auto py-3 px-3 font-semibold text-gray-900">
                         ${item.price}
                       </td>
                       <td className="m-auto py-3 px-3 sm:col-span-1">
@@ -182,7 +182,7 @@ function Cartpage() {
                 <div className="flex flex-grow px-3 py-3">
                   <button
                     type="button"
-                    className="text-md mr-2 mb-2 flex-grow rounded-lg bg-sky-800 py-2 font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-md mr-2 mb-2 flex-grow rounded-lg bg-sky-800 py-2 font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
