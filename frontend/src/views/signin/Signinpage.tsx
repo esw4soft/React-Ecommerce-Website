@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Store } from '../../Store'
+import { toast } from 'react-toastify'
+import { getError } from '../../utils'
 
 const Signinpage = () => {
   const navigate = useNavigate()
@@ -14,6 +16,7 @@ const Signinpage = () => {
   const [password, setPassword] = useState('')
 
   const { state, dispatch: btnDispatch } = useContext(Store)
+  const { userInfo } = state
 
   const submitHandler = async (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -26,9 +29,15 @@ const Signinpage = () => {
       localStorage.setItem('userInfo', JSON.stringify(data))
       navigate(redirect || '/')
     } catch (err) {
-      alert('invalid email or password')
+      toast.error(getError(err))
     }
   }
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect)
+    }
+  }, [navigate, redirect, userInfo])
   return (
     <div className="container mx-auto px-5 sm:w-2/5">
       <Helmet>

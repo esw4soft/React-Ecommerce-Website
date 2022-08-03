@@ -3,6 +3,9 @@ import { createContext, useReducer } from 'react'
 import { CartDet, ChildrenProps } from './types'
 // createcontext
 const initialState: StateType = {
+  userInfo: localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo') || '')
+    : null,
   cart: {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems') || '')
@@ -66,6 +69,12 @@ function reducer(state: StateType, action: ActionType) {
     }
     case 'USER_SIGNIN': {
       return { ...state, userInfo: action.payload }
+    }
+    case 'USER_SIGNOUT': {
+      return {
+        ...state,
+        userInfo: null,
+      }
     }
     default:
       return state
