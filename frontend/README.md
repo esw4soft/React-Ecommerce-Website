@@ -24,5 +24,28 @@
    routing, navigate  
    購物車按鈕: 增加減少, 確認購買, 刪除, 添加到購物車  
    按鈕上 type
+5. signinPage 製作  
+   signinpage 頁面畫面 RWD  
+   登入送出按鈕 function reducer  
+   存 token 在 localstorage  
+   登入後 redirect 頁面  
+   登入後使用網址回到登入頁時進行跳轉回首頁
+
+   ```jsx
+   useEffect(() => {
+     if (userInfo) {
+       navigate(redirect)
+     }
+   }, [navigate, redirect, userInfo])
+   ```
+
+   登入時 navbar 顯示使用者+ 下拉選單:
+
+   1. 使用 flowbite-react  
+      `https://github.com/themesberg/flowbite-react`
+
+   提示訊息美化
+
+   1. 使用 `import { ToastContainer } from 'react-toastify'` `import 'react-toastify/dist/ReactToastify.css'`
 
 紀錄開發時遇到的問題和一些重要註記
