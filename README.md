@@ -42,6 +42,8 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 4. 使用 useLocation 搭配 URLSearchParams 做登入轉址
 
+5. [MongoDB](https://www.mongodb.com/)
+
 ## Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).
