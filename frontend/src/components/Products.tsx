@@ -16,9 +16,9 @@ function Products(props: ProductsProps) {
 
   // 新增商品
   const addToCartHandler = async (item: CartDet) => {
-    const existItem = cartItems.find((item) => item.numberk === product.numberk)
+    const existItem = cartItems.find((item) => item._id === product._id)
     const quantity = existItem ? existItem.quantity + 1 : 1
-    const { data } = await axios.get(`/api/products/${item.numberk}`)
+    const { data } = await axios.get(`/api/products/${item._id}`)
 
     if (data.countInStock < quantity) {
       window.alert('sorry, product is out of stock')
@@ -29,7 +29,7 @@ function Products(props: ProductsProps) {
 
   return (
     <div
-      key={product.numberk}
+      key={product._id}
       className="product m-4 rounded-lg border border-gray-200 bg-white shadow-md"
     >
       <Link to={`/products/${product.slug}`}>
@@ -52,7 +52,7 @@ function Products(props: ProductsProps) {
         ) : (
           <button
             onClick={() => addToCartHandler(product)}
-            className='className="inline-flex dark:focus:ring-blue-800" items-center rounded-lg bg-sky-500 py-2 px-3 text-center text-sm font-medium text-white hover:bg-sky-600 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700'
+            className='className="inline-flex dark:focus:ring-blue-800" items-center rounded-lg bg-sky-800 py-2 px-3 text-center text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700'
           >
             add to cart
           </button>

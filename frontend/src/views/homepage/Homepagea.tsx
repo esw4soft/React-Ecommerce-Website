@@ -54,7 +54,7 @@ const Homepagea = () => {
         Featured Products
       </h1>
       <Helmet>
-        <title>hollowmazon</title>
+        <title>lowmazon</title>
       </Helmet>
       <div className="products flex flex-wrap justify-center">
         {loading ? (

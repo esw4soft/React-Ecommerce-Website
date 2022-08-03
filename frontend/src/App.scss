@@ -42,6 +42,9 @@
   @apply m-auto mb-4 flex w-4/5 rounded-lg bg-blue-100 p-4 text-sm text-blue-600 sm:w-full;
 }
 
+#dropdowmStyle ul li {
+  @apply block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-sky-900 hover:text-white dark:text-gray-200 dark:hover:bg-sky-900 dark:hover:text-white;
+}
 // ////////////////////////
 
 .App {

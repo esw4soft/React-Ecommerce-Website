@@ -7,7 +7,7 @@ import {
 import { ChildrenProps } from './preset'
 
 interface ProductDet {
-  numberk: string
+  _id: string
   name: string
   slug: string
   category: string
@@ -26,7 +26,7 @@ interface ProductDet {
 }
 
 interface CartDet {
-  numberk: string
+  _id: string
   name: string
   slug: string
   category: string
