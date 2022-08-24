@@ -8,6 +8,7 @@ import Homepagea from './views/homepage'
 import Productpage from './views/product'
 import Cartpage from './views/cart'
 import Signinpage from './views/signin'
+import ShippingAddresspage from './views/shipping'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 
@@ -63,6 +64,7 @@ function App() {
             <Route path="/products/:slug" element={<Productpage />} />
             <Route path="/cart" element={<Cartpage />} />
             <Route path="/signin" element={<Signinpage />} />
+            <Route path="/shipping" element={<ShippingAddresspage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>

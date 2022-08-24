@@ -16,8 +16,8 @@ function ShippingAddresspage() {
         <Helmet>
           <title>Shippting Address</title>
         </Helmet>
-        <h1 className="mb-6">Shipping Address</h1>
-        <form onSubmit={submitHandler}>
+        <h1 className="mb-6 px-10">Shipping Address</h1>
+        <form onSubmit={submitHandler} className="px-10">
           <div className="mb-6">
             <label
               htmlFor="fullName"
