@@ -16,8 +16,8 @@ function ShippingAddresspage() {
         <Helmet>
           <title>Shippting Address</title>
         </Helmet>
-        <h1 className="mb-6 px-10">Shipping Address</h1>
-        <form onSubmit={submitHandler} className="px-10">
+        <h1 className="mb-6 px-10 md:mx-auto md:w-1/2">Shipping Address</h1>
+        <form onSubmit={submitHandler} className="px-10 md:m-auto md:w-1/2">
           <div className="mb-6">
             <label
               htmlFor="fullName"
@@ -28,7 +28,7 @@ function ShippingAddresspage() {
             <input
               type="text"
               id="fullName"
-              className="d block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+              className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
               required
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
