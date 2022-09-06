@@ -1,14 +1,52 @@
-import React, { useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useNavigate } from 'react-router-dom'
+import { CheckoutSteps } from '../../components'
+import { Store } from '../../Store'
 
 function ShippingAddresspage() {
-  const [fullName, setFullName] = useState('')
-  const [address, setAddress] = useState('')
-  const [city, setCity] = useState('')
-  const [postalCode, setPostalCode] = useState('')
-  const [country, setCountry] = useState('')
+  const navigate = useNavigate()
+  const { state, dispatch: btnDispatch } = useContext(Store)
+  const {
+    userInfo,
+    cart: { shippingAddress },
+  } = state
+
+  const [fullName, setFullName] = useState(shippingAddress.fullName || '')
+  const [address, setAddress] = useState(shippingAddress.address || '')
+  const [city, setCity] = useState(shippingAddress.city || '')
+  const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '')
+  const [country, setCountry] = useState(shippingAddress.country || '')
+
+  useEffect(() => {
+    if (!userInfo) {
+      navigate('/signin?redirect=/shipping')
+    }
+  }, [userInfo, navigate])
+
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault()
+    btnDispatch({
+      type: 'SAVE_SHIPPING_ADDRESS',
+      payload: {
+        fullName,
+        address,
+        city,
+        postalCode,
+        country,
+      },
+    })
+    localStorage.setItem(
+      'shippingAddress',
+      JSON.stringify({
+        fullName,
+        address,
+        city,
+        postalCode,
+        country,
+      })
+    )
+    navigate('/payment')
   }
   return (
     <>
@@ -16,6 +54,7 @@ function ShippingAddresspage() {
         <Helmet>
           <title>Shippting Address</title>
         </Helmet>
+        <CheckoutSteps step1 step2></CheckoutSteps>
         <h1 className="mb-6 px-10 md:mx-auto md:w-1/2">Shipping Address</h1>
         <form onSubmit={submitHandler} className="px-10 md:m-auto md:w-1/2">
           <div className="mb-6">
