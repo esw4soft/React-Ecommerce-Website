@@ -40,6 +40,14 @@ interface CartDet {
   quantity: number
 }
 
+interface ShippingDet {
+  fullName: string
+  address: string
+  city: string
+  postalCode: string
+  country: string
+}
+
 interface ProductsProps {
   product: ProductDet
 }
@@ -55,4 +63,5 @@ export type {
   AllProductReducerState,
   CartDet,
   ChildrenProps,
+  ShippingDet,
 }
