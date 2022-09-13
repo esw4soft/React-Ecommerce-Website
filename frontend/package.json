@@ -3,6 +3,7 @@
   "proxy": "http://localhost:5001",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://esw4soft.github.io/React-Ecommerce-Website",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
@@ -15,6 +16,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "gh-pages": "^4.0.0",
     "flowbite": "^1.5.1",
     "flowbite-react": "^0.1.5",
     "prettier": "^2.6.2",
@@ -37,7 +39,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

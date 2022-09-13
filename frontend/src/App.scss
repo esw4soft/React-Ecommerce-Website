@@ -45,6 +45,18 @@
 #dropdowmStyle ul li {
   @apply block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-sky-900 hover:text-white dark:text-gray-200 dark:hover:bg-sky-900 dark:hover:text-white;
 }
+
+.checkbar > .usually {
+  flex-grow: 1;
+  border-bottom: 0.3rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+
+.checkbar > .active {
+  flex-grow: 1;
+  border-bottom: 0.3rem solid rgb(12 74 110);
+  color: rgb(12 74 110);
+}
 // ////////////////////////
 
 .App {
