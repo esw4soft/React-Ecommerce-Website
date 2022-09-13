@@ -65,6 +65,7 @@ function App() {
             <Route path="/products/:slug" element={<Productpage />} />
             <Route path="/cart" element={<Cartpage />} />
             <Route path="/signin" element={<Signinpage />} />
+            <Route path="/signinsd" element={<Signinpage />} />
             <Route path="/shipping" element={<ShippingAddresspage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
