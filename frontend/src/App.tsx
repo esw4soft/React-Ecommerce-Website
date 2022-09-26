@@ -10,6 +10,7 @@ import Cartpage from './views/cart'
 import Signinpage from './views/signin'
 import Signuppage from './views/signup'
 import ShippingAddresspage from './views/shipping'
+import PaymenyMethodPage from './views/payment'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 
@@ -21,6 +22,7 @@ function App() {
     btnDispatch({ type: 'USER_SIGNOUT' })
     localStorage.removeItem('userInfo')
     localStorage.removeItem('shippingAddress')
+    localStorage.removeItem('paymentMethod')
   }
   return (
     <BrowserRouter>
@@ -68,6 +70,7 @@ function App() {
             <Route path="/signin" element={<Signinpage />} />
             <Route path="/signup" element={<Signuppage />} />
             <Route path="/shipping" element={<ShippingAddresspage />} />
+            <Route path="/payment" element={<PaymenyMethodPage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>
