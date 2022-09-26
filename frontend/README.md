@@ -49,3 +49,14 @@
    1. 使用 `import { ToastContainer } from 'react-toastify'` `import 'react-toastify/dist/ReactToastify.css'`
 
 紀錄開發時遇到的問題和一些重要註記
+
+1. 沒有任何多載符合此呼叫。  
+   多載 1 (共 5)，'(reducer: ReducerWithoutAction<any>, initializerArg: any, initializer?: undefined): [any, DispatchWithoutAction]'，發生下列錯誤。
+
+   類型 '(state: StateType, action: ActionType) => { cart: { cartItems: any[]; shippingAddress: ShippingDet; paymentMethod: string; }; userInfo?: any; } | { userInfo: null; cart: { ...; }; } | { ...; } | { ...; }' 的引數不可指派給類型 'ReducerWithoutAction<any>' 的參數。
+
+多載 2 (共 5)，'(reducer: (state: StateType, action: ActionType) => { cart: { cartItems: any[]; shippingAddress: ShippingDet; paymentMethod: string; }; userInfo?: any; } | { ...; } | { ...; } | { ...; }, initialState: never, initializer?: undefined): [...]'，發生下列錯誤。
+
+類型 'StateType' 的引數不可指派給類型 'never' 的參數。`
+
+ANS: 檢查所有用到 cartItems 的東西有沒有填上,發生在 cartItems 加入 payment, 因為 reducer 的 logout 位置少加了 payment 而報錯,所以每當加入新資料時需要檢查每個有用到此資料的地方
