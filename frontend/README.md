@@ -59,4 +59,4 @@
 
 類型 'StateType' 的引數不可指派給類型 'never' 的參數。`
 
-ANS: 檢查所有用到 cartItems 的東西有沒有填上,發生在 cartItems 加入 payment, 因為 reducer 的 logout 位置少加了 payment 而報錯,所以每當加入新資料時需要檢查每個有用到此資料的地方
+ANS: 檢查所有用到 cartItems 的東西有沒有填上,發生在 cartItems 加入 payment, 因為 reducer 的 logout 位置少加了 payment 而報錯,所以每當加入新資料時需要檢查每個有用到此資料的地方 aaa
