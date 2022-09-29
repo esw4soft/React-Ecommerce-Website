@@ -53,7 +53,7 @@ const PaymenyMethodPage = () => {
             </label>
           </div>
 
-          <div className="mb-20 flex items-center">
+          <div className="mb-10 flex items-center">
             <input
               id="PayPal"
               type="radio"
