@@ -23,7 +23,7 @@ const PaymenyMethodPage = () => {
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault()
     btnDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName })
-    localStorage.setItem('paymentMethod', paymentMethodName)
+    localStorage.setItem('paymentMethod', JSON.stringify(paymentMethodName))
     navigate('/placeorder')
   }
   return (
