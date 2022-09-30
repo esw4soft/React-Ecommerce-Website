@@ -11,6 +11,16 @@ const PlaceOrderPage = () => {
   const { state, dispatch: btnDispatch } = useContext(Store)
   const { cart, userInfo } = state
 
+  // 商品價錢計算
+  // Number.EPSILON 誤差範圍: ex 0.1+0.2=0.3的誤差
+  const round2 = (num: number) => Math.round(num * 100 + Number.EPSILON) / 100
+  cart.itemsPrice = round2(
+    cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
+  )
+  cart.shippingPrice = cart.itemsPrice > 100 ? round2(0) : round2(10)
+  cart.taxPrice = Math.round(round2(0.1 * cart.itemsPrice))
+  cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
+
   const placeOrderHandler = async () => {
     console.log('aaa')
   }
@@ -19,7 +29,7 @@ const PlaceOrderPage = () => {
     if (!cart.paymentMethod) {
       navigate('/payment')
     }
-  }, [cart, navigator])
+  }, [cart, navigate])
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
@@ -130,28 +140,28 @@ const PlaceOrderPage = () => {
               <strong>
                 Items:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
-                  123
+                  ${cart.itemsPrice.toFixed(2)}
                 </span>
               </strong>
 
               <strong>
                 Shipping:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
-                  456
+                  ${cart.shippingPrice.toFixed(2)}
                 </span>
               </strong>
 
               <strong>
                 Tax:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
-                  456
+                  ${cart.taxPrice.toFixed(2)}
                 </span>
               </strong>
 
               <strong>
                 Order Total:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
-                  456
+                  ${cart.totalPrice.toFixed(2)}
                 </span>
               </strong>
 
