@@ -6,11 +6,14 @@ import { Dropdown } from 'flowbite-react'
 import { ToastContainer } from 'react-toastify'
 import Homepagea from './views/homepage'
 import Productpage from './views/product'
-import Cartpage from './views/cart'
+import {
+  Cartpage,
+  PaymenyMethodPage,
+  ShippingAddresspage,
+  PlaceOrderPage,
+} from './views/cart'
 import Signinpage from './views/signin'
 import Signuppage from './views/signup'
-import ShippingAddresspage from './views/shipping'
-import PaymenyMethodPage from './views/payment'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 
@@ -71,6 +74,7 @@ function App() {
             <Route path="/signup" element={<Signuppage />} />
             <Route path="/shipping" element={<ShippingAddresspage />} />
             <Route path="/payment" element={<PaymenyMethodPage />} />
+            <Route path="/placeorder" element={<PlaceOrderPage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>
