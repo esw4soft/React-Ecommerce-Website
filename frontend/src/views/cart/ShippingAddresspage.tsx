@@ -55,7 +55,9 @@ function ShippingAddresspage() {
           <title>Shippting Address</title>
         </Helmet>
         <CheckoutSteps step1 step2></CheckoutSteps>
-        <h1 className="mb-6 px-10 md:mx-auto md:w-1/2">Shipping Address</h1>
+        <h1 className="mb-6 px-10 text-center md:mx-auto md:w-1/2 md:text-left">
+          Shipping Address
+        </h1>
         <form onSubmit={submitHandler} className="px-10 md:m-auto md:w-1/2">
           <div className="mb-6">
             <label

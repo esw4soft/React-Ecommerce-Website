@@ -23,7 +23,7 @@ const PaymenyMethodPage = () => {
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault()
     btnDispatch({ type: 'SAVE_PAYMENT_METHOD', payload: paymentMethodName })
-    localStorage.setItem('paymentMethod', paymentMethodName)
+    localStorage.setItem('paymentMethod', JSON.stringify(paymentMethodName))
     navigate('/placeorder')
   }
   return (
@@ -32,7 +32,9 @@ const PaymenyMethodPage = () => {
         <title>Payment Method</title>
       </Helmet>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <h1 className="mb-6 px-10 md:mx-auto md:w-1/2">Payment Method</h1>
+      <h1 className="mb-6 px-10 text-center md:mx-auto md:w-1/2 md:text-left">
+        Payment Method
+      </h1>
       <form onSubmit={submitHandler} className="px-10 md:m-auto md:w-1/2">
         <div className="mb-6">
           <div className="mb-4 flex items-center">

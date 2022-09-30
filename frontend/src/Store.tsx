@@ -38,6 +38,10 @@ interface StateType {
     cartItems: CartDet[]
     shippingAddress: ShippingDet
     paymentMethod: string
+    itemsPrice?: number
+    shippingPrice?: number
+    taxPrice?: number
+    totalPrice?: number
   }
   userInfo?: any
 }
