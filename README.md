@@ -44,7 +44,7 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 5. [MongoDB](https://www.mongodb.com/)
 
-6. testtest
+6. testtestss
 
 ## Learn More
 
