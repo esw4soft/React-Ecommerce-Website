@@ -48,6 +48,12 @@
 
    1. 使用 `import { ToastContainer } from 'react-toastify'` `import 'react-toastify/dist/ReactToastify.css'`
 
+6. 購物流程 page 製作  
+   step components 製作  
+   payment page 畫面+ 流程功能+ 導航  
+   shipping page 畫面+ 流程功能+ 導航  
+   place order page 畫面+ 流程功能+ 導航
+
 紀錄開發時遇到的問題和一些重要註記
 
 1. 沒有任何多載符合此呼叫。  
@@ -59,4 +65,6 @@
 
 類型 'StateType' 的引數不可指派給類型 'never' 的參數。`
 
-ANS: 檢查所有用到 cartItems 的東西有沒有填上,發生在 cartItems 加入 payment, 因為 reducer 的 logout 位置少加了 payment 而報錯,所以每當加入新資料時需要檢查每個有用到此資料的地方 aaa
+ANS: 檢查所有用到 cartItems 的東西有沒有填上,發生在 cartItems 加入 payment, 因為 reducer 的 logout 位置少加了 payment 而報錯,所以每當加入新資料時需要檢查每個有用到此資料的地方
+
+2. Number.EPSILON 解決誤差範圍: ex 0.1+0.2=0.3 的誤差

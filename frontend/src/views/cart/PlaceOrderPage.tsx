@@ -12,7 +12,7 @@ const PlaceOrderPage = () => {
   const { cart, userInfo } = state
 
   // 商品價錢計算
-  // Number.EPSILON 誤差範圍: ex 0.1+0.2=0.3的誤差
+  // Number.EPSILON 解決誤差範圍: ex 0.1+0.2=0.3的誤差
   const round2 = (num: number) => Math.round(num * 100 + Number.EPSILON) / 100
   cart.itemsPrice = round2(
     cart.cartItems.reduce((a, c) => a + c.quantity * c.price, 0)
