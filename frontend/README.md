@@ -68,3 +68,5 @@
 ANS: 檢查所有用到 cartItems 的東西有沒有填上,發生在 cartItems 加入 payment, 因為 reducer 的 logout 位置少加了 payment 而報錯,所以每當加入新資料時需要檢查每個有用到此資料的地方
 
 2. Number.EPSILON 解決誤差範圍: ex 0.1+0.2=0.3 的誤差
+
+3. "homepage": "https://esw4soft.github.io/React-Ecommerce-Website",

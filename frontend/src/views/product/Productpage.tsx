@@ -52,9 +52,7 @@ function Productpage() {
   const { state, dispatch: btnDispatch } = useContext(Store)
   const { cart } = state
   const addToCartHandler = async () => {
-    const existItem = cart.cartItems.find(
-      (item) => item._id === product._id
-    )
+    const existItem = cart.cartItems.find((item) => item._id === product._id)
     const quantity = existItem ? existItem.quantity + 1 : 1
     const { data } = await axios.get(`/api/products/${product._id}`)
     if (data.countInStock < quantity) {
