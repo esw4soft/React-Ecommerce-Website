@@ -1,13 +1,41 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useReducer } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useNavigate } from 'react-router-dom'
 import { Card, Button } from 'flowbite-react'
+import { toast } from 'react-toastify'
+import Axios from 'axios'
 import { Store } from '../../Store'
-import { CheckoutSteps } from '../../components'
+import { getError } from '../../utils'
+import { CheckoutSteps, Loadingcpm } from '../../components'
+import { PlaceOrderReducerState, GetProduct } from '../../types/reducer'
 import logo from '../../logo.svg'
+
+// reducer function
+const reducer = (state: PlaceOrderReducerState, action: GetProduct) => {
+  switch (action.type) {
+    case 'CREATE_REQUEST':
+      return { ...state, loading: true }
+    case 'CREATE_SUCCESS':
+      return { ...state, loading: false }
+    case 'CREATE_FAIL':
+      return { ...state, loading: false }
+    default:
+      return state
+  }
+}
 
 const PlaceOrderPage = () => {
   const navigate = useNavigate()
+
+  // reducer initial data
+  const hint: PlaceOrderReducerState = {
+    loading: false,
+  }
+
+  // 送dispatch進reducer判斷變更store資料
+  const [{ loading }, dispatch] = useReducer(reducer, hint)
+
+  // 拿取store資料
   const { state, dispatch: btnDispatch } = useContext(Store)
   const { cart, userInfo } = state
 
@@ -21,8 +49,44 @@ const PlaceOrderPage = () => {
   cart.taxPrice = Math.round(round2(0.1 * cart.itemsPrice))
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
 
+  // 確認送出訂單
   const placeOrderHandler = async () => {
-    console.log('aaa')
+    try {
+      // 開始請求動作
+      dispatch({ type: 'CREATE_REQUEST' })
+
+      // 發送請求
+      const { data } = await Axios.post(
+        '/api/orders',
+        {
+          orderItems: cart.cartItems,
+          shippingAddress: cart.shippingAddress,
+          paymentMethod: cart.paymentMethod,
+          itemsPrice: cart.itemsPrice,
+          shippingPrice: cart.shippingPrice,
+          taxPrice: cart.taxPrice,
+          totalPrice: cart.totalPrice,
+        },
+        {
+          headers: {
+            authorization: `knight ${userInfo.token}`,
+          },
+        }
+      )
+
+      // 情除store資料
+      btnDispatch({ type: 'CART_CLEAR' })
+
+      // 請求成功
+      dispatch({ type: 'CREATE_SUCCESS' })
+
+      // 清除localstorage
+      localStorage.removeItem('cartItems')
+      navigate(`/order/${data.order._id}`)
+    } catch (err) {
+      dispatch({ type: 'CREATE_FAIL' })
+      toast.error(getError(err))
+    }
   }
 
   useEffect(() => {
@@ -101,7 +165,7 @@ const PlaceOrderPage = () => {
                       </td>
 
                       <td className="col-span-2 self-center font-semibold text-gray-900 sm:col-span-2">
-                        <Link to={`/product/${item.slug}`}>{item.name}</Link>
+                        <Link to={`/products/${item.slug}`}>{item.name}</Link>
                       </td>
 
                       <td className="col-span-2 m-auto py-3 px-3 sm:col-span-3">
@@ -183,6 +247,7 @@ const PlaceOrderPage = () => {
                   />
                 </svg>
               </Button>
+              {loading && <Loadingcpm></Loadingcpm>}
             </Card>
           </div>
         </div>
