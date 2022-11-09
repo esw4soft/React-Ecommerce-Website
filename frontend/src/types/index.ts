@@ -2,6 +2,7 @@ import {
   GetProduct,
   ProductReducerState,
   AllProductReducerState,
+  ShowOrderReducerState,
 } from './reducer'
 
 import { ChildrenProps } from './preset'
@@ -64,4 +65,5 @@ export type {
   CartDet,
   ChildrenProps,
   ShippingDet,
+  ShowOrderReducerState,
 }
