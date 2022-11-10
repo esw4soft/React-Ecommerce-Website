@@ -9,6 +9,11 @@ interface AllProductReducerState {
   error: string
 }
 
+interface ShowOrderReducerState {
+  loading: boolean
+  error?: string
+  order: any
+}
 interface PlaceOrderReducerState {
   loading: boolean
   error?: string
@@ -25,4 +30,5 @@ export type {
   ProductReducerState,
   AllProductReducerState,
   PlaceOrderReducerState,
+  ShowOrderReducerState,
 }

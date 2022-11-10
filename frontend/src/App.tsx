@@ -11,6 +11,7 @@ import {
   PaymenyMethodPage,
   ShippingAddresspage,
   PlaceOrderPage,
+  ShowOrderPage,
 } from './views/cart'
 import Signinpage from './views/signin'
 import Signuppage from './views/signup'
@@ -75,6 +76,7 @@ function App() {
             <Route path="/shipping" element={<ShippingAddresspage />} />
             <Route path="/payment" element={<PaymenyMethodPage />} />
             <Route path="/placeorder" element={<PlaceOrderPage />} />
+            <Route path="/orders/:id" element={<ShowOrderPage />} />
             <Route path="/" element={<Homepagea />} />
           </Routes>
         </main>

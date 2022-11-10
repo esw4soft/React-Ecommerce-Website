@@ -53,6 +53,7 @@
    payment page 畫面+ 流程功能+ 導航  
    shipping page 畫面+ 流程功能+ 導航  
    place order page 畫面+ 流程功能+ 導航
+   show order page : 建立後端 api 給 order/:id > 前端抓取 api 的 id 帶入 > 渲染訂單畫面
 
 紀錄開發時遇到的問題和一些重要註記
 
