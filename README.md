@@ -44,7 +44,12 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 5. [MongoDB](https://www.mongodb.com/)
 
-6. testtestss
+6. paypal 流程(sandbox)
+   1. paypal develop 官網申請 clientID
+   2. 前端製作 paypal api 傳 clientID 給 paypal 伺服器
+   3. npm install react-paypal-js >> 掛上 paypal Privider, Reducer,
+   4. paypal load fuction, paypal button, approve payment function
+   5. order api 送入後端
 
 ## Learn More
 

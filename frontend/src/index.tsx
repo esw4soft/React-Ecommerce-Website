@@ -5,13 +5,19 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { HelmetProvider } from 'react-helmet-async'
 import { StorePrivider } from './Store'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <StorePrivider>
       <HelmetProvider>
-        <App />
+        <PayPalScriptProvider
+          deferLoading={true}
+          options={{ 'client-id': 'test' }}
+        >
+          <App />
+        </PayPalScriptProvider>
       </HelmetProvider>
     </StorePrivider>
   </React.StrictMode>

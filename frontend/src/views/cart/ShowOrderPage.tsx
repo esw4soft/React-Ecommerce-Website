@@ -1,6 +1,7 @@
 import React, { useContext, useReducer, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import { Helmet } from 'react-helmet-async'
 import { Loadingcpm, Messagecpm } from '../../components'
 import { ShowOrderReducerState, GetProduct } from '../../types'
@@ -58,6 +59,13 @@ function ShowOrderPage() {
     }
     if (!order._id || (order._id && order._id !== orderId)) {
       fetchOrder()
+    } else {
+      const loadPaypalScript = async () => {
+        const { data: clientId } = await axios.get('/api/keys/paypal', {
+          headers: { authorization: `knight ${userInfo.token}` },
+        })
+      }
+      loadPaypalScript()
     }
   }, [order, userInfo, orderId, navigate])
 
