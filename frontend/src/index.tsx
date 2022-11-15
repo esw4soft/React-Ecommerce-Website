@@ -14,7 +14,7 @@ root.render(
       <HelmetProvider>
         <PayPalScriptProvider
           deferLoading={true}
-          options={{ 'client-id': 'test' }}
+          options={{ 'client-id': 'sb' }}
         >
           <App />
         </PayPalScriptProvider>

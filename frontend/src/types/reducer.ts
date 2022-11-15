@@ -13,6 +13,8 @@ interface ShowOrderReducerState {
   loading: boolean
   error?: string
   order: any
+  successPay: boolean
+  loadingPay: boolean
 }
 interface PlaceOrderReducerState {
   loading: boolean

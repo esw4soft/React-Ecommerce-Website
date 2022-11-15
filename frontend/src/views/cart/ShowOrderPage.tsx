@@ -1,7 +1,11 @@
 import React, { useContext, useReducer, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
+import {
+  PayPalButtons,
+  usePayPalScriptReducer,
+  SCRIPT_LOADING_STATE,
+} from '@paypal/react-paypal-js'
 import { Helmet } from 'react-helmet-async'
 import { Loadingcpm, Messagecpm } from '../../components'
 import { ShowOrderReducerState, GetProduct } from '../../types'
@@ -9,6 +13,7 @@ import { Store } from '../../Store'
 import { getError } from '../../utils'
 import { CartDet } from '../../types'
 import logo from '../../logo.svg'
+import { toast } from 'react-toastify'
 
 // reducer function
 const reducer = (state: ShowOrderReducerState, action: GetProduct) => {
@@ -19,6 +24,16 @@ const reducer = (state: ShowOrderReducerState, action: GetProduct) => {
       return { ...state, loading: false, order: action.payload }
     case 'FETCH_FAIL':
       return { ...state, loading: false, error: action.payload }
+
+    case 'PAY_REQUEST':
+      return { ...state, loadingPay: true }
+    case 'PAY_SUCCESS':
+      return { ...state, loadingPay: false, successPay: true }
+    case 'PAY_FAIL':
+      return { ...state, loadingPay: false }
+    case 'PAY_RESET':
+      return { ...state, loadingPay: false, successPay: false }
+
     default:
       return state
   }
@@ -36,8 +51,57 @@ function ShowOrderPage() {
     loading: true,
     order: {},
     error: '',
+    successPay: false,
+    loadingPay: false,
   }
-  const [{ loading, error, order }, dispatch] = useReducer(reducer, hint)
+
+  // order reducer
+  const [{ loading, error, order, successPay, loadingPay }, dispatch] =
+    useReducer(reducer, hint)
+
+  // paypal reducer
+  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer()
+
+  // create order
+  function createOrder(data: any, actions: any) {
+    return actions.order
+      .create({
+        purchase_units: [
+          {
+            amount: { value: order.totalPrice },
+          },
+        ],
+      })
+      .then((orderID: any) => {
+        return orderID
+      })
+  }
+
+  // approve order
+  function onApprove(data: any, actions: any) {
+    return actions.order.capture().then(async function (details: any) {
+      try {
+        dispatch({ type: 'PAY_REQUEST' })
+        const { data } = await axios.put(
+          `/api/orders/${order._id}/pay`,
+          details,
+          {
+            headers: { authorization: `knight ${userInfo.token}` },
+          }
+        )
+
+        dispatch({ type: 'PAY_SUCCESS', payload: data })
+        toast.success('Order is paid')
+      } catch (err) {
+        dispatch({ type: 'PAY_FAIL', payload: getError(err) })
+        toast.error(getError(err))
+      }
+    })
+  }
+
+  function onError(err: any) {
+    toast.error(getError(err))
+  }
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -54,20 +118,40 @@ function ShowOrderPage() {
       }
     }
 
+    // 沒有用戶資料(未登入)
     if (!userInfo) {
       return navigate('/signin')
     }
-    if (!order._id || (order._id && order._id !== orderId)) {
+    // 沒有訂單/ 有付錢/ 有訂單但不是此筆
+    if (!order._id || successPay || (order._id && order._id !== orderId)) {
       fetchOrder()
+      if (successPay) {
+        dispatch({ type: 'PAY_RESET' })
+      }
     } else {
+      //此筆訂單&沒付錢
       const loadPaypalScript = async () => {
         const { data: clientId } = await axios.get('/api/keys/paypal', {
           headers: { authorization: `knight ${userInfo.token}` },
         })
+        // dispatch 狀態
+        paypalDispatch({
+          type: 'setLoadingStatus',
+          value: SCRIPT_LOADING_STATE.PENDING, //導入套件裡面的常數
+        })
+
+        // dispatch 基本資料
+        paypalDispatch({
+          type: 'resetOptions',
+          value: {
+            'client-id': clientId,
+            currency: 'TWD',
+          },
+        })
       }
       loadPaypalScript()
     }
-  }, [order, userInfo, orderId, navigate])
+  }, [order, userInfo, orderId, navigate, paypalDispatch])
 
   return loading ? (
     <Loadingcpm></Loadingcpm>
@@ -127,6 +211,22 @@ function ShowOrderPage() {
                   ${order.totalPrice.toFixed(2)}
                 </strong>
               </div>
+              {!order.isPaid && (
+                <div className="flex justify-around p-2 px-5">
+                  {isPending ? (
+                    <Loadingcpm />
+                  ) : (
+                    <div>
+                      <PayPalButtons
+                        createOrder={createOrder}
+                        onApprove={onApprove}
+                        onError={onError}
+                      ></PayPalButtons>
+                    </div>
+                  )}
+                  {loadingPay && <Loadingcpm></Loadingcpm>}
+                </div>
+              )}
             </div>
           </div>
         </div>
