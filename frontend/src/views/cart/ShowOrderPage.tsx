@@ -72,14 +72,25 @@ function ShowOrderPage() {
           },
         ],
       })
-      .then((orderID: any) => {
+      .then((orderID: string) => {
         return orderID
       })
   }
 
+  type OrderDetail = {
+    create_time: string
+    id: string
+    links: []
+    payer: object
+    purchase_units: []
+    update_time: string
+    intent: string
+    status: string
+  }
+
   // approve order
   function onApprove(data: any, actions: any) {
-    return actions.order.capture().then(async function (details: any) {
+    return actions.order.capture().then(async function (details: OrderDetail) {
       try {
         dispatch({ type: 'PAY_REQUEST' })
         const { data } = await axios.put(
@@ -90,8 +101,14 @@ function ShowOrderPage() {
           }
         )
 
+        // console.log(data)
+        // console.log(details)
+
         dispatch({ type: 'PAY_SUCCESS', payload: data })
         toast.success('Order is paid')
+
+        navigate(0)
+        // console.log('Order is paid')
       } catch (err) {
         dispatch({ type: 'PAY_FAIL', payload: getError(err) })
         toast.error(getError(err))
