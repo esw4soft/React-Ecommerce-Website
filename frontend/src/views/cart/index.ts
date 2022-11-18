@@ -3,6 +3,7 @@ import PaymenyMethodPage from './PaymenyMethodPage'
 import ShippingAddresspage from './ShippingAddresspage'
 import PlaceOrderPage from './PlaceOrderPage'
 import ShowOrderPage from './ShowOrderPage'
+import OrderHistoryPage from './OrderHistoryPage'
 
 export {
   Cartpage,
@@ -10,4 +11,5 @@ export {
   ShippingAddresspage,
   PlaceOrderPage,
   ShowOrderPage,
+  OrderHistoryPage,
 }

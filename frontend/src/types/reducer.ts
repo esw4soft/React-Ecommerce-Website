@@ -16,6 +16,11 @@ interface ShowOrderReducerState {
   successPay: boolean
   loadingPay: boolean
 }
+interface OrderHistoryReducerState {
+  loading: boolean
+  error?: string
+  orders?: any
+}
 interface PlaceOrderReducerState {
   loading: boolean
   error?: string
@@ -33,4 +38,5 @@ export type {
   AllProductReducerState,
   PlaceOrderReducerState,
   ShowOrderReducerState,
+  OrderHistoryReducerState,
 }
