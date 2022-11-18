@@ -3,6 +3,7 @@ import {
   ProductReducerState,
   AllProductReducerState,
   ShowOrderReducerState,
+  OrderHistoryReducerState,
 } from './reducer'
 
 import { ChildrenProps } from './preset'
@@ -66,4 +67,5 @@ export type {
   ChildrenProps,
   ShippingDet,
   ShowOrderReducerState,
+  OrderHistoryReducerState,
 }
