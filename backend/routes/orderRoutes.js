@@ -6,6 +6,7 @@ import Order from '../models/orderModel.js'
 
 const orderRouter = express.Router()
 
+// 寫入訂單
 orderRouter.post(
   '/', isAuth,
   expressAsyncHandler(async (req, res) => {
@@ -25,6 +26,17 @@ orderRouter.post(
   })
 )
 
+// 歷史訂單
+orderRouter.get(
+  '/mine', isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id })
+      res.send(orders)
+    }
+  )
+)
+
+// 尋找訂單資料
 orderRouter.get(
   '/:id', isAuth,
   expressAsyncHandler(async (req, res) => {
@@ -38,6 +50,7 @@ orderRouter.get(
   })
 )
 
+// paypal資料
 orderRouter.put(
   '/:id/pay', isAuth,
   expressAsyncHandler(async (req, res) => {
