@@ -16,6 +16,7 @@ import {
 } from './views/cart'
 import Signinpage from './views/signin'
 import Signuppage from './views/signup'
+import { ProfilePage } from './views/user'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 
@@ -74,6 +75,7 @@ function App() {
             <Route path="/cart" element={<Cartpage />} />
             <Route path="/signin" element={<Signinpage />} />
             <Route path="/signup" element={<Signuppage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route path="/shipping" element={<ShippingAddresspage />} />
             <Route path="/payment" element={<PaymenyMethodPage />} />
             <Route path="/placeorder" element={<PlaceOrderPage />} />
