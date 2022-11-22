@@ -56,6 +56,11 @@
    show order page : 建立後端 api 給 order/:id > 前端抓取 api 的 id 帶入 > 渲染訂單畫面
    order history: 建立歷史訂單葉面 從端端撈資料到前端渲染葉面
 
+7. 個人資料 page 製作
+   1. 個人資料畫面
+   2. 接上 route
+   3. 送出 function, 進後端驗證更新, dispatch, reducer, 登入狀態, 提示成功或失敗
+
 紀錄開發時遇到的問題和一些重要註記
 
 1. 沒有任何多載符合此呼叫。  

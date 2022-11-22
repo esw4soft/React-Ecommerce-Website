@@ -4,6 +4,7 @@ import {
   AllProductReducerState,
   ShowOrderReducerState,
   OrderHistoryReducerState,
+  ProfileReducerState,
 } from './reducer'
 
 import { ChildrenProps } from './preset'
@@ -68,4 +69,5 @@ export type {
   ShippingDet,
   ShowOrderReducerState,
   OrderHistoryReducerState,
+  ProfileReducerState,
 }
