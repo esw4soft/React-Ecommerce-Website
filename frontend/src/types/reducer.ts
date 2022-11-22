@@ -21,6 +21,10 @@ interface OrderHistoryReducerState {
   error?: string
   orders?: any
 }
+
+interface ProfileReducerState {
+  loadingUpdate: boolean
+}
 interface PlaceOrderReducerState {
   loading: boolean
   error?: string
@@ -39,4 +43,5 @@ export type {
   PlaceOrderReducerState,
   ShowOrderReducerState,
   OrderHistoryReducerState,
+  ProfileReducerState,
 }
