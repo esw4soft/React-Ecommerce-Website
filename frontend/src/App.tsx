@@ -16,7 +16,7 @@ import {
 } from './views/cart'
 import Signinpage from './views/signin'
 import Signuppage from './views/signup'
-import { ProfilePage } from './views/user'
+import ProfilePage from './views/user'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 
