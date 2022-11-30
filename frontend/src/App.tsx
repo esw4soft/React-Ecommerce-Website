@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useContext } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { Store } from './Store'
 import { Dropdown } from 'flowbite-react'
 import { ToastContainer } from 'react-toastify'
+import { AiOutlineBars } from 'react-icons/ai'
+
 import Homepagea from './views/homepage'
 import Productpage from './views/product'
 import {
@@ -31,12 +33,23 @@ function App() {
     localStorage.removeItem('paymentMethod')
     window.location.href = '/signin'
   }
+
+  const [sidebarIsOpen, setSidebatIsOpen] = useState(false)
   return (
     <BrowserRouter>
-      <div className="min-h-[95vh]">
+      <div
+        className={
+          sidebarIsOpen
+            ? 'ml-[240px]  min-h-[95vh] transition-all duration-300'
+            : 'ml-0 min-h-[95vh] transition-all duration-300'
+        }
+      >
         <ToastContainer position="bottom-left" autoClose={1500} limit={1} />
         <header className="flex justify-start bg-sky-900 p-4">
           <nav className="container mx-auto flex items-center">
+            <button onClick={() => setSidebatIsOpen(!sidebarIsOpen)}>
+              <AiOutlineBars />
+            </button>
             <Link to="/" className="bg-sky-900 text-xl font-bold text-white">
               lowmazon
             </Link>
@@ -70,6 +83,15 @@ function App() {
             )}
           </nav>
         </header>
+        <div
+          className={
+            sidebarIsOpen
+              ? 'absolute left-0 top-0 flex h-full w-[240px] flex-col flex-wrap justify-between bg-sky-900 transition-all duration-500'
+              : 'absolute left-[-300px] top-0 flex h-full w-[240px] flex-col flex-wrap justify-between bg-sky-900 transition-all duration-500'
+          }
+        >
+          123
+        </div>
         <main className="container mx-auto py-4">
           <Routes>
             <Route path="/products/:slug" element={<Productpage />} />
