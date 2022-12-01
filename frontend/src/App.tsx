@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { Store } from './Store'
@@ -35,6 +35,17 @@ function App() {
   }
 
   const [sidebarIsOpen, setSidebatIsOpen] = useState(false)
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        return 0
+      } catch (err) {
+        return 0
+      }
+    }
+  })
   return (
     <BrowserRouter>
       <div
@@ -47,10 +58,16 @@ function App() {
         <ToastContainer position="bottom-left" autoClose={1500} limit={1} />
         <header className="flex justify-start bg-sky-900 p-4">
           <nav className="container mx-auto flex items-center">
-            <button onClick={() => setSidebatIsOpen(!sidebarIsOpen)}>
+            <button
+              onClick={() => setSidebatIsOpen(!sidebarIsOpen)}
+              className="ml-5 text-2xl  font-bold text-white"
+            >
               <AiOutlineBars />
             </button>
-            <Link to="/" className="bg-sky-900 text-xl font-bold text-white">
+            <Link
+              to="/"
+              className="ml-5 bg-sky-900 text-xl font-bold text-white"
+            >
               lowmazon
             </Link>
             <Link to="/cart" className="ml-5 text-xl text-white">
@@ -90,7 +107,18 @@ function App() {
               : 'absolute left-[-300px] top-0 flex h-full w-[240px] flex-col flex-wrap justify-between bg-sky-900 transition-all duration-500'
           }
         >
-          123
+          <div>
+            <strong>Categories</strong>
+            {categories.map((category: any) => (
+              <Link
+                key={category}
+                to={`/search?category=${category}`}
+                onClick={() => setSidebatIsOpen(false)}
+              >
+                {category}
+              </Link>
+            ))}
+          </div>
         </div>
         <main className="container mx-auto py-4">
           <Routes>
