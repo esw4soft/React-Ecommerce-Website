@@ -1,4 +1,5 @@
 import express from 'express'
+import expressAsyncHandler from 'express-async-handler'
 import Product from '../models/productModel.js'
 
 const productRouter = express.Router()
@@ -7,6 +8,12 @@ productRouter.get('/', async(req, res) => {
   const products = await Product.find()
   res.send(products)
 })
+
+// 分類
+productRouter.get('/categories', expressAsyncHandler(async (req, res) => {
+  const categories = await Product.find().distinct('category')
+  res.send(categories)
+}))
 
 // 單一產品
 productRouter.get('/slug/:slug', async (req, res) => {

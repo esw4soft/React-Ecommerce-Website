@@ -3,9 +3,10 @@ import { useContext } from 'react'
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { Store } from './Store'
 import { Dropdown } from 'flowbite-react'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
 import { AiOutlineBars } from 'react-icons/ai'
 
+import { getError } from './utils'
 import Homepagea from './views/homepage'
 import Productpage from './views/product'
 import {
@@ -21,6 +22,7 @@ import Signuppage from './views/signup'
 import ProfilePage from './views/user'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
+import axios from 'axios'
 
 function App() {
   const { state, dispatch: btnDispatch } = useContext(Store)
@@ -40,11 +42,13 @@ function App() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        return 0
+        const { data } = await axios.get(`/api/products/categories`)
+        setCategories(data)
       } catch (err) {
-        return 0
+        toast.error(getError(err))
       }
     }
+    fetchCategories()
   })
   return (
     <BrowserRouter>
