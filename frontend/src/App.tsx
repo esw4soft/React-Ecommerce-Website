@@ -4,7 +4,12 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
 import { Store } from './Store'
 import { Dropdown } from 'flowbite-react'
 import { toast, ToastContainer } from 'react-toastify'
-import { AiOutlineBars } from 'react-icons/ai'
+import {
+  AiOutlineBars,
+  AiOutlineHome,
+  AiOutlineShoppingCart,
+  AiOutlineUser,
+} from 'react-icons/ai'
 
 import { getError } from './utils'
 import Homepagea from './views/homepage'
@@ -23,6 +28,7 @@ import ProfilePage from './views/user'
 import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 import axios from 'axios'
+import SearchBox from './components/SearchBox'
 
 function App() {
   const { state, dispatch: btnDispatch } = useContext(Store)
@@ -61,47 +67,115 @@ function App() {
       >
         <ToastContainer position="bottom-left" autoClose={1500} limit={1} />
         <header className="flex justify-start bg-sky-900 p-4">
-          <nav className="container mx-auto flex items-center">
-            <button
-              onClick={() => setSidebatIsOpen(!sidebarIsOpen)}
-              className="ml-5 text-2xl  font-bold text-white"
-            >
-              <AiOutlineBars />
-            </button>
-            <Link
-              to="/"
-              className="ml-5 bg-sky-900 text-xl font-bold text-white"
-            >
-              lowmazon
-            </Link>
-            <Link to="/cart" className="ml-5 text-xl text-white">
-              Cart
-              {cart.cartItems.length > 0 && (
-                <span className="ml-1 rounded-full bg-red-700 px-1.5 text-xs font-semibold text-red-100 dark:bg-red-900 dark:text-red-200">
-                  {cart.cartItems.reduce((pre, item) => pre + item.quantity, 0)}
-                </span>
-              )}
-            </Link>
-            {userInfo ? (
-              <div id="dropdowmStyle" className="ml-5 text-xl text-white">
-                <Dropdown label={userInfo.name} inline={true}>
-                  <Link to="/profile">
-                    <Dropdown.Item>User Profile</Dropdown.Item>
-                  </Link>
-                  <Link to="/orderhistory">
-                    <Dropdown.Item>Order History</Dropdown.Item>
-                  </Link>
-                  <Dropdown.Divider />
-                  <Link to="/signin" onClick={signoutHandler}>
-                    <Dropdown.Item>Sign out</Dropdown.Item>
-                  </Link>
-                </Dropdown>
-              </div>
-            ) : (
-              <Link to="/signin" className="ml-5 text-xl text-white">
-                SignIn
+          <nav className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center">
+              <button
+                onClick={() => setSidebatIsOpen(!sidebarIsOpen)}
+                className="text-2xl  font-bold text-white"
+              >
+                <AiOutlineBars />
+              </button>
+              <Link
+                to="/"
+                className="ml-5 hidden bg-sky-900 text-xl font-bold text-white sm:block"
+              >
+                lowmazon
               </Link>
-            )}
+              <Link
+                to="/"
+                className="ml-4 text-2xl font-bold text-white sm:hidden"
+              >
+                <AiOutlineHome />
+              </Link>
+              <div className="ml-5">
+                <SearchBox />
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <Link
+                to="/cart"
+                className="ml-5 hidden text-xl text-white sm:block"
+              >
+                Cart
+                {cart.cartItems.length > 0 && (
+                  <span className="ml-1 rounded-full bg-red-700 px-1.5 text-xs font-semibold text-red-100 dark:bg-red-900 dark:text-red-200">
+                    {cart.cartItems.reduce(
+                      (pre, item) => pre + item.quantity,
+                      0
+                    )}
+                  </span>
+                )}
+              </Link>
+              <Link
+                to="/cart"
+                className="relative ml-5 flex text-2xl text-white sm:hidden"
+              >
+                <AiOutlineShoppingCart />
+                {cart.cartItems.length > 0 && (
+                  <span className="absolute top-[-5px] right-[-5px] ml-1 rounded-full bg-red-700 px-1.5 text-xs font-semibold text-red-100 dark:bg-red-900 dark:text-red-200">
+                    {cart.cartItems.reduce(
+                      (pre, item) => pre + item.quantity,
+                      0
+                    )}
+                  </span>
+                )}
+              </Link>
+              {userInfo ? (
+                <>
+                  <div
+                    id="dropdowmStyle"
+                    className="ml-5 hidden text-xl text-white sm:block"
+                  >
+                    <Dropdown label={userInfo.name} inline={true}>
+                      <Link to="/profile">
+                        <Dropdown.Item>User Profile</Dropdown.Item>
+                      </Link>
+                      <Link to="/orderhistory">
+                        <Dropdown.Item>Order History</Dropdown.Item>
+                      </Link>
+                      <Dropdown.Divider />
+                      <Link to="/signin" onClick={signoutHandler}>
+                        <Dropdown.Item>Sign out</Dropdown.Item>
+                      </Link>
+                    </Dropdown>
+                  </div>
+                  <div
+                    id="dropdowmStyle"
+                    className="ml-5 flex items-center text-2xl text-white sm:hidden"
+                  >
+                    <AiOutlineUser />
+                    <Dropdown label={''} inline={true}>
+                      <Link to="/profile">
+                        <Dropdown.Item>User Profile</Dropdown.Item>
+                      </Link>
+                      <Link to="/orderhistory">
+                        <Dropdown.Item>Order History</Dropdown.Item>
+                      </Link>
+                      <Dropdown.Divider />
+                      <Link to="/signin" onClick={signoutHandler}>
+                        <Dropdown.Item>Sign out</Dropdown.Item>
+                      </Link>
+                    </Dropdown>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/signin"
+                    className="ml-5 hidden text-xl text-white sm:block"
+                  >
+                    SignIn
+                  </Link>
+                  <Link
+                    to="/signin"
+                    className="ml-5 text-2xl text-white sm:hidden"
+                  >
+                    <AiOutlineUser />
+                  </Link>
+                </>
+              )}
+            </div>
           </nav>
         </header>
         <div
