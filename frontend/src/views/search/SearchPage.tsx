@@ -3,6 +3,7 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { Loadingcpm, Messagecpm, Rating } from '../../components'
 import { getError } from '../../utils'
 
 const reducer = (state: any, action: any) => {
@@ -30,6 +31,40 @@ const reducer = (state: any, action: any) => {
       return state
   }
 }
+
+const prices = [
+  {
+    name: '$1 to $50',
+    value: '1-50',
+  },
+  {
+    name: '$51 to $200',
+    value: '51-200',
+  },
+  {
+    name: '$201 to $1000',
+    value: '201-1000',
+  },
+]
+
+export const ratings = [
+  {
+    name: '4stars & up',
+    rating: 4,
+  },
+  {
+    name: '3stars & up',
+    rating: 3,
+  },
+  {
+    name: '2stars & up',
+    rating: 2,
+  },
+  {
+    name: '1stars & up',
+    rating: 1,
+  },
+]
 
 const SearchPage = () => {
   const navigate = useNavigate()
@@ -94,8 +129,101 @@ const SearchPage = () => {
       <div className="grid grid-cols-4">
         <h3>Department</h3>
         <ul>
-          <li></li>
+          <li>
+            <Link
+              to={getFilterUrl({ category: 'all' })}
+              className={'all' === category ? 'font-bold' : ''}
+            >
+              Any
+            </Link>
+          </li>
+          {categories.map((c) => (
+            <li key={c}>
+              <Link
+                className={c === category ? 'font-bold' : ''}
+                to={getFilterUrl({ category: c })}
+              >
+                {c}
+              </Link>
+            </li>
+          ))}
         </ul>
+      </div>
+
+      <div className="grid grid-cols-4">
+        <h3>Price</h3>
+        <ul>
+          <li>
+            <Link
+              to={getFilterUrl({ price: 'all' })}
+              className={'all' === price ? 'font-bold' : ''}
+            >
+              Any
+            </Link>
+          </li>
+          {prices.map((p) => (
+            <li key={p.value}>
+              <Link
+                className={p.value === price ? 'font-bold' : ''}
+                to={getFilterUrl({ price: p.value })}
+              >
+                {p.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="grid grid-cols-4">
+        <h3>Avg Customer Review</h3>
+        <ul>
+          {ratings.map((r) => (
+            <li key={r.name}>
+              <Link
+                className={`${r.rating}` === `${rating}` ? 'font-bold' : ''}
+                to={getFilterUrl({ rating: r.rating })}
+              >
+                <Rating caption={' & up'} rating={r.rating}></Rating>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link
+              to={getFilterUrl({ rating: 'all' })}
+              className={rating === 'all' ? 'font-bold' : ''}
+            >
+              <Rating caption={' & up'} rating={0}></Rating>
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      <div className="grid grid-cols-9">
+        {loading ? (
+          <Loadingcpm></Loadingcpm>
+        ) : error ? (
+          <Messagecpm msgcode={0}>{error}</Messagecpm>
+        ) : (
+          <>
+            <div className="grid grid-cols-6">
+              <div>
+                {countProducts === 0 ? 'no' : countProducts} Results
+                {query !== 'all' && ' : ' + query}
+                {category !== 'all' && ' : ' + category}
+                {price !== 'all' && ' : Price' + price}
+                {rating !== 'all' && ' : Rating' + rating + ' & up'}
+                {query !== 'all' ||
+                  category !== 'all' ||
+                  price !== 'all' ||
+                  rating !== 'all' ? (
+                  <div onClick={() => navigate('/search')}>
+                    <i className="fas fa-times-circle"></i>
+                  </div>
+                ) : null}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
