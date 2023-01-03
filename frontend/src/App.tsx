@@ -29,6 +29,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import './App.scss'
 import axios from 'axios'
 import SearchBox from './components/SearchBox'
+import SearchPage from './views/search'
 
 function App() {
   const { state, dispatch: btnDispatch } = useContext(Store)
@@ -202,6 +203,7 @@ function App() {
           <Routes>
             <Route path="/products/:slug" element={<Productpage />} />
             <Route path="/cart" element={<Cartpage />} />
+            <Route path="/search" element={<SearchPage />} />
             <Route path="/signin" element={<Signinpage />} />
             <Route path="/signup" element={<Signuppage />} />
             <Route path="/profile" element={<ProfilePage />} />

@@ -3,7 +3,8 @@ import React, { useEffect, useReducer, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { Loadingcpm, Messagecpm, Rating } from '../../components'
+import { FaTimesCircle } from 'react-icons/fa'
+import { Loadingcpm, Messagecpm, Products, Rating } from '../../components'
 import { getError } from '../../utils'
 
 const reducer = (state: any, action: any) => {
@@ -126,104 +127,154 @@ const SearchPage = () => {
         <title>Search Products</title>
       </Helmet>
 
-      <div className="grid grid-cols-4">
-        <h3>Department</h3>
-        <ul>
-          <li>
-            <Link
-              to={getFilterUrl({ category: 'all' })}
-              className={'all' === category ? 'font-bold' : ''}
-            >
-              Any
-            </Link>
-          </li>
-          {categories.map((c) => (
-            <li key={c}>
-              <Link
-                className={c === category ? 'font-bold' : ''}
-                to={getFilterUrl({ category: c })}
-              >
-                {c}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <div className="grid grid-cols-4 grid-rows-3">
+        <div className="rows-span-3 col-span-1">
+          <div className="">
+            <h3>Department</h3>
+            <ul>
+              <li>
+                <Link
+                  to={getFilterUrl({ category: 'all' })}
+                  className={'all' === category ? 'font-bold' : ''}
+                >
+                  Any
+                </Link>
+              </li>
+              {categories.map((c) => (
+                <li key={c}>
+                  <Link
+                    className={c === category ? 'font-bold' : ''}
+                    to={getFilterUrl({ category: c })}
+                  >
+                    {c}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="grid grid-cols-4">
-        <h3>Price</h3>
-        <ul>
-          <li>
-            <Link
-              to={getFilterUrl({ price: 'all' })}
-              className={'all' === price ? 'font-bold' : ''}
-            >
-              Any
-            </Link>
-          </li>
-          {prices.map((p) => (
-            <li key={p.value}>
-              <Link
-                className={p.value === price ? 'font-bold' : ''}
-                to={getFilterUrl({ price: p.value })}
-              >
-                {p.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+          <div className="">
+            <h3>Price</h3>
+            <ul>
+              <li>
+                <Link
+                  to={getFilterUrl({ price: 'all' })}
+                  className={'all' === price ? 'font-bold' : ''}
+                >
+                  Any
+                </Link>
+              </li>
+              {prices.map((p) => (
+                <li key={p.value}>
+                  <Link
+                    className={p.value === price ? 'font-bold' : ''}
+                    to={getFilterUrl({ price: p.value })}
+                  >
+                    {p.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      <div className="grid grid-cols-4">
-        <h3>Avg Customer Review</h3>
-        <ul>
-          {ratings.map((r) => (
-            <li key={r.name}>
-              <Link
-                className={`${r.rating}` === `${rating}` ? 'font-bold' : ''}
-                to={getFilterUrl({ rating: r.rating })}
-              >
-                <Rating caption={' & up'} rating={r.rating}></Rating>
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link
-              to={getFilterUrl({ rating: 'all' })}
-              className={rating === 'all' ? 'font-bold' : ''}
-            >
-              <Rating caption={' & up'} rating={0}></Rating>
-            </Link>
-          </li>
-        </ul>
-      </div>
+          <div className="">
+            <h3>Avg Customer Review</h3>
+            <ul>
+              {ratings.map((r) => (
+                <li key={r.name}>
+                  <Link
+                    className={`${r.rating}` === `${rating}` ? 'font-bold' : ''}
+                    to={getFilterUrl({ rating: r.rating })}
+                  >
+                    <Rating caption={' & up'} rating={r.rating}></Rating>
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to={getFilterUrl({ rating: 'all' })}
+                  className={rating === 'all' ? 'font-bold' : ''}
+                >
+                  <Rating caption={' & up'} rating={0}></Rating>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-      <div className="grid grid-cols-9">
-        {loading ? (
-          <Loadingcpm></Loadingcpm>
-        ) : error ? (
-          <Messagecpm msgcode={0}>{error}</Messagecpm>
-        ) : (
-          <>
-            <div className="grid grid-cols-6">
-              <div>
-                {countProducts === 0 ? 'no' : countProducts} Results
-                {query !== 'all' && ' : ' + query}
-                {category !== 'all' && ' : ' + category}
-                {price !== 'all' && ' : Price' + price}
-                {rating !== 'all' && ' : Rating' + rating + ' & up'}
-                {query !== 'all' ||
-                  category !== 'all' ||
-                  price !== 'all' ||
-                  rating !== 'all' ? (
-                  <div onClick={() => navigate('/search')}>
-                    <i className="fas fa-times-circle"></i>
+        <div className="col-span-3">
+          <div className="">
+            {loading ? (
+              <Loadingcpm></Loadingcpm>
+            ) : error ? (
+              <Messagecpm msgcode={0}>{error}</Messagecpm>
+            ) : (
+              <>
+                <div className="flex items-center justify-between">
+                  <div className="">
+                    <div>
+                      {countProducts === 0 ? 'no' : countProducts} Results
+                      {query !== 'all' && ' : ' + query}
+                      {category !== 'all' && ' : ' + category}
+                      {price !== 'all' && ' : Price' + price}
+                      {rating !== 'all' && ' : Rating' + rating + ' & up'}
+                      {query !== 'all' ||
+                        category !== 'all' ||
+                        price !== 'all' ||
+                        rating !== 'all' ? (
+                        <button onClick={() => navigate('/search')}>
+                          <FaTimesCircle />
+                        </button>
+                      ) : null}
+                    </div>
                   </div>
-                ) : null}
-              </div>
-            </div>
-          </>
-        )}
+                  <div className="">
+                    Sort by{'  '}
+                    <select
+                      value={order}
+                      onChange={(e) => {
+                        navigate(getFilterUrl({ order: e.target.value }))
+                      }}
+                    >
+                      <option value="newest">Newest Arrivals</option>
+                      <option value="lowest">Price: Low to High</option>
+                      <option value="highest">Price: High to Low</option>
+                      <option value="toprated">Avg. Customer Reviews</option>
+                    </select>
+                  </div>
+                </div>
+
+                {products.length === 0 && (
+                  <Messagecpm msgcode={0}>No Produdct FIMF</Messagecpm>
+                )}
+
+                <div className="flex">
+                  {products.map((product: any) => (
+                    <div className="h-[50%] w-[35%]" key={product._id}>
+                      <Products product={product}></Products>
+                    </div>
+                  ))}
+                </div>
+
+                <div>
+                  {[...Array(pages).keys()].map((x) => (
+                    <Link
+                      key={x + 1}
+                      className="mx-1"
+                      to={getFilterUrl({ page: x + 1 })}
+                    >
+                      <button
+                        className={Number(page) === x + 1 ? 'font-bold' : ''}
+                      >
+                        {x + 1}
+                      </button>
+                    </Link>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
