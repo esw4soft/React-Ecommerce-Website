@@ -3,11 +3,12 @@ import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs'
 
 interface RatingProps {
   rating: number
-  numReviews: number
+  numReviews?: number
+  caption?: string
 }
 
 function Rating(props: RatingProps) {
-  const { rating, numReviews } = props
+  const { rating, numReviews, caption } = props
   return (
     <div className="rating flex items-center">
       <span>
@@ -55,7 +56,11 @@ function Rating(props: RatingProps) {
           <BsStar />
         )}
       </span>
-      <p className="ml-1">{numReviews} reviews</p>
+      {caption ? (
+        <span>{caption}</span>
+      ) : (
+        <span>{' ' + numReviews + ' reviews'}</span>
+      )}
     </div>
   )
 }
