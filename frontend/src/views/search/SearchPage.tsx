@@ -127,10 +127,10 @@ const SearchPage = () => {
         <title>Search Products</title>
       </Helmet>
 
-      <div className="grid grid-cols-4 grid-rows-3">
-        <div className="rows-span-3 col-span-1">
-          <div className="">
-            <h3>Department</h3>
+      <div className="text-center sm:grid sm:grid-cols-4 sm:text-left">
+        <div className="col-span-4 sm:col-span-1">
+          <div className="mb-5 mt-1">
+            <h2 className="text-2xl font-bold">Department</h2>
             <ul>
               <li>
                 <Link
@@ -153,8 +153,8 @@ const SearchPage = () => {
             </ul>
           </div>
 
-          <div className="">
-            <h3>Price</h3>
+          <div className="mb-5 mt-1">
+            <h2 className="text-2xl font-bold">Price</h2>
             <ul>
               <li>
                 <Link
@@ -177,9 +177,9 @@ const SearchPage = () => {
             </ul>
           </div>
 
-          <div className="">
-            <h3>Avg Customer Review</h3>
-            <ul>
+          <div className="mb-5 mt-1">
+            <h2 className="text-2xl font-bold">Avg Customer Review</h2>
+            <ul className="flex flex-col items-center sm:block">
               {ratings.map((r) => (
                 <li key={r.name}>
                   <Link
@@ -203,14 +203,14 @@ const SearchPage = () => {
         </div>
 
         <div className="col-span-3">
-          <div className="">
+          <div className="font-bold">
             {loading ? (
               <Loadingcpm></Loadingcpm>
             ) : error ? (
               <Messagecpm msgcode={0}>{error}</Messagecpm>
             ) : (
               <>
-                <div className="flex items-center justify-between">
+                <div className="mx-4 flex items-center justify-between">
                   <div className="">
                     <div>
                       {countProducts === 0 ? 'no' : countProducts} Results
@@ -229,8 +229,9 @@ const SearchPage = () => {
                     </div>
                   </div>
                   <div className="">
-                    Sort by{'  '}
+                    Sort by {'  '}
                     <select
+                      className="rounded border-[#e0e0e0]"
                       value={order}
                       onChange={(e) => {
                         navigate(getFilterUrl({ order: e.target.value }))
@@ -248,19 +249,19 @@ const SearchPage = () => {
                   <Messagecpm msgcode={0}>No Produdct FIMF</Messagecpm>
                 )}
 
-                <div className="flex">
+                <div className="flex flex-col sm:flex-row">
                   {products.map((product: any) => (
-                    <div className="h-[50%] w-[35%]" key={product._id}>
+                    <div className="" key={product._id}>
                       <Products product={product}></Products>
                     </div>
                   ))}
                 </div>
 
-                <div>
+                <div className="my-5 mx-4">
                   {[...Array(pages).keys()].map((x) => (
                     <Link
                       key={x + 1}
-                      className="mx-1"
+                      className="mr-[-2px] border-2 border-[#e0e0e0] px-5 py-2"
                       to={getFilterUrl({ page: x + 1 })}
                     >
                       <button

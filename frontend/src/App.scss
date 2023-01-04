@@ -57,6 +57,13 @@
   border-bottom: 0.3rem solid rgb(12 74 110);
   color: rgb(12 74 110);
 }
+
+.product-info > a > h5 {
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  // width: 100%;
+}
 // ////////////////////////
 
 .App {
