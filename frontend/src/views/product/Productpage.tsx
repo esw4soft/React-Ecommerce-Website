@@ -86,27 +86,27 @@ function Productpage() {
               numReviews={product.numReviews}
             ></Rating>
           </div>
-          <div className="border-b-2 py-2 px-3">Price : ${product.price}</div>
+          <div className="border-b-2 py-2 px-3">價格 : ${product.price}</div>
           <div className="py-2 px-3">
-            Description: <p>{product.description}</p>
+            詳細內容: <p>{product.description}</p>
           </div>
         </section>
 
         <section className="col-span-2 rounded px-3 py-2 sm:col-span-1 sm:border">
           <div className="flex justify-between border-b-2 px-3 py-2">
-            <p>Price:</p>
+            <p>價格:</p>
             <p>${product.price}</p>
           </div>
           <div className="mb-1 flex justify-between border-b-2 px-3 py-2">
-            <p>Status:</p>
+            <p>狀態:</p>
             <p>
               {product.countInStock > 0 ? (
                 <span className="rounded bg-green-100 px-2.5 py-0.5 text-sm font-medium text-green-800 dark:bg-green-200 dark:text-green-900">
-                  In Stock
+                  有庫存
                 </span>
               ) : (
                 <span className="rounded bg-red-100 px-2.5 py-0.5 text-sm font-medium text-red-800 dark:bg-red-200 dark:text-red-900">
-                  Unavailable
+                  缺貨中
                 </span>
               )}
             </p>
@@ -120,7 +120,7 @@ function Productpage() {
                     onClick={addToCartHandler}
                     className="mr-2 mb-2 rounded-lg bg-sky-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                    Add to Cart
+                    加入購物車
                   </button>
                 </div>
               </div>

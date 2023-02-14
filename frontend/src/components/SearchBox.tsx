@@ -21,7 +21,7 @@ const SearchBox = () => {
             name="q"
             id="q"
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="search.."
+            placeholder="搜尋.."
           />
           <button
             type="submit"

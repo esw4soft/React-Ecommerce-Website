@@ -180,17 +180,17 @@ function ShowOrderPage() {
         <title>Order {orderId}</title>
       </Helmet>
       <h1 className="text-center text-xl sm:text-left sm:text-[1.875rem]">
-        Order {orderId}
+        訂單 {orderId}
       </h1>
       <div className="mt-4 grid grid-cols-3 gap-4 px-[2rem] sm:px-0">
         <div className="col-span-3 rounded-md p-[1rem] shadow-md sm:col-span-2">
           <div>
             <h2 className="mb-2 text-center font-bold sm:text-left sm:text-2xl">
-              Shipping
+              物流
             </h2>
             <div className="mb-6 text-center sm:text-left">
-              <strong>Name:</strong> {order.shippingAddress.fullName} <br />
-              <strong>Address:</strong> {order.shippingAddress.address},{' '}
+              <strong>姓名:</strong> {order.shippingAddress.fullName} <br />
+              <strong>地址:</strong> {order.shippingAddress.address},{' '}
               {order.shippingAddress.city}, {order.shippingAddress.postalCode}{' '}
               {order.shippingAddress.ccountry}
             </div>
@@ -207,23 +207,23 @@ function ShowOrderPage() {
         <div className="col-span-3 sm:col-span-1">
           <div className="col-span-2 rounded-md p-[1rem] shadow-md sm:col-span-1 sm:border">
             <div className="flex justify-between px-3 py-2">
-              <h2 className="m-auto font-bold sm:m-0">Order Summary</h2>
+              <h2 className="m-auto font-bold sm:m-0">訂單總覽</h2>
             </div>
             <div>
               <div className="flex border-b-2 py-2 px-5">
-                <strong className="w-1/2">Items :</strong>
+                <strong className="w-1/2">購買項目 :</strong>
                 <span className="w-1/2">${order.itemsPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-around border-b-2 p-2 px-5">
-                <strong className="w-1/2">Shipping :</strong>
+                <strong className="w-1/2">物流 :</strong>
                 <span className="w-1/2">${order.shippingPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-around border-b-2 p-2 px-5">
-                <strong className="w-1/2">Tax :</strong>
+                <strong className="w-1/2">税 :</strong>
                 <span className="w-1/2">${order.taxPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-around p-2 px-5">
-                <strong className="w-1/2">Order Total :</strong>
+                <strong className="w-1/2">訂單總額 :</strong>
                 <strong className="w-1/2">
                   ${order.totalPrice.toFixed(2)}
                 </strong>
@@ -251,10 +251,10 @@ function ShowOrderPage() {
         <div className="col-span-3 rounded-md p-[1rem] shadow-md sm:col-span-2">
           <div>
             <h2 className="mb-2 text-center font-bold sm:text-left sm:text-2xl">
-              Payment
+              支付
             </h2>
             <div className="mb-6 text-center sm:text-left">
-              <strong>Method:</strong> {order.paymentMethod}
+              <strong>支付方式:</strong> {order.paymentMethod}
             </div>
             {order.isPaid ? (
               <Messagecpm msgcode={1}>Paid at {order.paidAt}</Messagecpm>
@@ -267,7 +267,7 @@ function ShowOrderPage() {
         <div className="col-span-3 rounded-md p-[1rem] shadow-md sm:col-span-2">
           <div>
             <h2 className="mb-2 text-center font-bold sm:text-left sm:text-2xl">
-              Items
+              購買項目
             </h2>
             <div className="text-center">
               {order.orderItems.map((item: CartDet) => (

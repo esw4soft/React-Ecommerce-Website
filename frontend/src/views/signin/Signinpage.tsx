@@ -43,20 +43,20 @@ const Signinpage = () => {
       <Helmet>
         <title>Sign In</title>
       </Helmet>
-      <h1 className="mb-6">Sign In</h1>
+      <h1 className="mb-6">登入</h1>
       <form onSubmit={submitHandler}>
         <div className="mb-6">
           <label
             htmlFor="email"
             className="mb-2 block text-sm font-medium text-gray-900"
           >
-            Email
+            信箱
           </label>
           <input
             type="email"
             id="email"
             className="d block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
-            placeholder="Your email"
+            placeholder="你的信箱"
             required
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -66,7 +66,7 @@ const Signinpage = () => {
             htmlFor="password"
             className="mb-2 block text-sm font-medium text-gray-900"
           >
-            Password
+            密碼
           </label>
           <input
             type="password"
@@ -90,22 +90,22 @@ const Signinpage = () => {
             htmlFor="remember"
             className="ml-2 text-sm font-medium text-gray-900"
           >
-            Remember me
+            記得我的信箱
           </label>
         </div>
         <button
           type="submit"
           className="mb-4 w-full rounded-lg bg-sky-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
         >
-          Sign In
+          登入
         </button>
         <div className="mb-6">
-          New custimer?{' '}
+          新用戶?{' '}
           <Link
             className="border-b-2 border-sky-700 text-sky-700"
             to={`/signup?redirect=${redirect}`}
           >
-            Create your account
+            創建新帳號
           </Link>
         </div>
       </form>

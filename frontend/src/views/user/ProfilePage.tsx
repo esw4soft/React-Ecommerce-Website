@@ -64,12 +64,12 @@ const ProfilePage = () => {
       <Helmet>
         <title>User Profile</title>
       </Helmet>
-      <h1 className="text-center sm:text-left">User Profile</h1>
+      <h1 className="text-center sm:text-left">個人資料</h1>
       <div className="p-5 sm:p-0">
         <form className="flex flex-col gap-4" onSubmit={submitHandler}>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="Name1" value="Name" />
+              <Label htmlFor="Name1" value="姓名" />
             </div>
             <TextInput
               id="Name1"
@@ -82,7 +82,7 @@ const ProfilePage = () => {
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email1" value="Email" />
+              <Label htmlFor="email1" value="信箱" />
             </div>
             <TextInput
               id="email1"
@@ -95,7 +95,7 @@ const ProfilePage = () => {
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="password1" value="Password" />
+              <Label htmlFor="password1" value="密碼" />
             </div>
             <TextInput
               id="password1"
@@ -108,7 +108,7 @@ const ProfilePage = () => {
 
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="cfpassword" value="Comfirm Password" />
+              <Label htmlFor="cfpassword" value="確認密碼" />
             </div>
             <TextInput
               id="cfpassword"
@@ -123,7 +123,7 @@ const ProfilePage = () => {
             type="submit"
             className="my-4 w-full rounded-lg bg-sky-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
           >
-            Update
+            確認更新
           </button>
         </form>
       </div>

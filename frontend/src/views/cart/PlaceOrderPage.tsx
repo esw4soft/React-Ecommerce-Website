@@ -101,24 +101,24 @@ const PlaceOrderPage = () => {
         <title>Preview Order</title>
       </Helmet>
       <h1 className="mb-6 px-10 text-center md:w-1/2 md:text-left">
-        Preview Order
+        確認訂單
       </h1>
       <div className="gap-4 sm:grid sm:grid-cols-3">
         <div className="sm:col-span-2">
           <div className="mb-6 px-10 md:mx-auto">
             <Card>
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Shipping
+                物流
               </h5>
               <strong>
-                Name:{' '}
+                姓名:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   {cart.shippingAddress.fullName}
                 </span>
               </strong>
 
               <strong>
-                Address:{' '}
+                地址:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   {cart.shippingAddress.address}, {cart.shippingAddress.city},{' '}
                   {cart.shippingAddress.postalCode},{' '}
@@ -127,31 +127,31 @@ const PlaceOrderPage = () => {
               </strong>
 
               <Link className="text-sky-800 underline" to="/shipping">
-                Edit
+                編輯
               </Link>
             </Card>
           </div>
           <div className="mb-6 px-10 md:mx-auto">
             <Card>
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Payment
+                支付
               </h5>
               <strong>
-                Method:{' '}
+              支付方式:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   {cart.paymentMethod}
                 </span>
               </strong>
 
               <Link className="text-sky-800 underline" to="/payment">
-                Edit
+                編輯
               </Link>
             </Card>
           </div>
           <div className="mb-6 px-10 md:mx-auto">
             <Card>
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Items
+                購買項目
               </h5>
               <table className="w-full text-left text-sm text-gray-500 ">
                 <tbody>
@@ -190,7 +190,7 @@ const PlaceOrderPage = () => {
               </table>
 
               <Link className="text-sky-800 underline" to="/cart">
-                Edit
+                編輯
               </Link>
             </Card>
           </div>
@@ -199,31 +199,31 @@ const PlaceOrderPage = () => {
           <div className="mb-6 px-10 md:mx-auto">
             <Card>
               <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Order Summary
+                訂單總覽
               </h5>
               <strong>
-                Items:{' '}
+                購買項目:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   ${cart.itemsPrice.toFixed(2)}
                 </span>
               </strong>
 
               <strong>
-                Shipping:{' '}
+                物流:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   ${cart.shippingPrice.toFixed(2)}
                 </span>
               </strong>
 
               <strong>
-                Tax:{' '}
+                税:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   ${cart.taxPrice.toFixed(2)}
                 </span>
               </strong>
 
               <strong>
-                Order Total:{' '}
+                訂單總金額:{' '}
                 <span className="font-normal text-gray-700 dark:text-gray-400">
                   ${cart.totalPrice.toFixed(2)}
                 </span>
@@ -233,7 +233,7 @@ const PlaceOrderPage = () => {
                 disabled={cart.cartItems.length === 0}
                 onClick={placeOrderHandler}
               >
-                Place Order
+                下訂單
                 <svg
                   className="ml-2 -mr-1 h-4 w-4"
                   fill="currentColor"

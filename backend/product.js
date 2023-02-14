@@ -3,7 +3,7 @@ const product = {
   products: [
     {
       numberk: '1',
-      name: 'Nike Slim shit',
+      name: 'Nike Slim shirt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
       image: '/images/p1.jpg',
@@ -50,6 +50,19 @@ const product = {
       countInStock: 5,
       brand: 'Puma',
       rating: 5,
+      numReviews: 10,
+      description: 'high quality product',
+    },
+    {
+      numberk: '5',
+      name: 'Adidas SHield',
+      slug: 'adidas-shield',
+      category: 'shield',
+      image: '/images/p4.jpg',
+      price: 75,
+      countInStock: 5,
+      brand: 'Adidas',
+      rating: 4,
       numReviews: 10,
       description: 'high quality product',
     },

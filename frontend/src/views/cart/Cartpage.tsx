@@ -43,14 +43,14 @@ function Cartpage() {
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>
-      <h1 className="text-center sm:text-left">Shopping Cart</h1>
+      <h1 className="text-center sm:text-left">購物車</h1>
       <div className="mt-6 grid grid-cols-3 gap-4">
         <div className="col-span-3 sm:col-span-2 ">
           {cartItems.length === 0 ? (
             <Messagecpm msgcode={1}>
-              Cart is empty.{' '}
+              購物車是空的{' '}
               <Link to="/" className="border-b-2 border-blue-400">
-                Go shopping
+                去購物
               </Link>
             </Messagecpm>
           ) : (
@@ -168,9 +168,8 @@ function Cartpage() {
           <section className="col-span-2 rounded-md px-3 py-2 shadow-md sm:col-span-1 sm:border">
             <div className="flex justify-between border-b-2 px-3 py-2">
               <h2 className="m-auto text-2xl font-bold sm:m-0">
-                Subtotal (
-                {cartItems.reduce((pre, item) => pre + item.quantity, 0)} item)
-                : $
+                總計 ({cartItems.reduce((pre, item) => pre + item.quantity, 0)}{' '}
+                物品) : $
                 {cartItems.reduce(
                   (pre, item) => pre + item.quantity * item.price,
                   0
@@ -186,7 +185,7 @@ function Cartpage() {
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
-                    Proceed to Checkout
+                    進行結算
                   </button>
                 </div>
               </div>

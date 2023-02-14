@@ -56,7 +56,7 @@ function ShippingAddresspage() {
         </Helmet>
         <CheckoutSteps step1 step2></CheckoutSteps>
         <h1 className="mb-6 px-10 text-center md:mx-auto md:w-1/2 md:text-left">
-          Shipping Address
+          物流詳情
         </h1>
         <form onSubmit={submitHandler} className="px-10 md:m-auto md:w-1/2">
           <div className="mb-6">
@@ -64,7 +64,7 @@ function ShippingAddresspage() {
               htmlFor="fullName"
               className="mb-2 block text-sm font-medium text-gray-900"
             >
-              fullName
+              名字
             </label>
             <input
               type="text"
@@ -80,7 +80,7 @@ function ShippingAddresspage() {
               htmlFor="address"
               className="mb-2 block text-sm font-medium text-gray-900"
             >
-              Address
+              地址
             </label>
             <input
               type="text"
@@ -96,7 +96,7 @@ function ShippingAddresspage() {
               htmlFor="city"
               className="mb-2 block text-sm font-medium text-gray-900"
             >
-              City
+              城市
             </label>
             <input
               type="text"
@@ -112,7 +112,7 @@ function ShippingAddresspage() {
               htmlFor="postalCode"
               className="mb-2 block text-sm font-medium text-gray-900"
             >
-              PostalCode
+              郵遞區號
             </label>
             <input
               type="text"
@@ -128,7 +128,7 @@ function ShippingAddresspage() {
               htmlFor="country"
               className="mb-2 block text-sm font-medium text-gray-900"
             >
-              Country
+              國家
             </label>
             <input
               type="text"
@@ -143,7 +143,7 @@ function ShippingAddresspage() {
             type="submit"
             className="mb-4 w-full rounded-lg bg-sky-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
           >
-            Submit
+            下一步
           </button>
         </form>
       </div>

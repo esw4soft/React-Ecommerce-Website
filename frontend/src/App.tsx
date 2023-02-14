@@ -80,7 +80,7 @@ function App() {
                 to="/"
                 className="ml-5 hidden bg-sky-900 text-xl font-bold text-white sm:block"
               >
-                lowmazon
+                Hollowmazon
               </Link>
               <Link
                 to="/"
@@ -96,11 +96,11 @@ function App() {
             <div className="flex items-center">
               <Link
                 to="/cart"
-                className="ml-5 hidden text-xl text-white sm:block"
+                className="ml-5 hidden text-xl text-white sm:flex sm:items-center sm:justify-center"
               >
-                Cart
+                購物車
                 {cart.cartItems.length > 0 && (
-                  <span className="ml-1 rounded-full bg-red-700 px-1.5 text-xs font-semibold text-red-100 dark:bg-red-900 dark:text-red-200">
+                  <span className="ml-1 rounded-full bg-red-700 px-1.5 pt-[2px] pb-[3px] text-xs font-semibold text-red-100 dark:bg-red-900 dark:text-red-200">
                     {cart.cartItems.reduce(
                       (pre, item) => pre + item.quantity,
                       0
@@ -130,14 +130,14 @@ function App() {
                   >
                     <Dropdown label={userInfo.name} inline={true}>
                       <Link to="/profile">
-                        <Dropdown.Item>User Profile</Dropdown.Item>
+                        <Dropdown.Item>個人資料</Dropdown.Item>
                       </Link>
                       <Link to="/orderhistory">
-                        <Dropdown.Item>Order History</Dropdown.Item>
+                        <Dropdown.Item>歷史訂單</Dropdown.Item>
                       </Link>
                       <Dropdown.Divider />
                       <Link to="/signin" onClick={signoutHandler}>
-                        <Dropdown.Item>Sign out</Dropdown.Item>
+                        <Dropdown.Item>登出</Dropdown.Item>
                       </Link>
                     </Dropdown>
                   </div>
@@ -148,14 +148,14 @@ function App() {
                     <AiOutlineUser />
                     <Dropdown label={''} inline={true}>
                       <Link to="/profile">
-                        <Dropdown.Item>User Profile</Dropdown.Item>
+                        <Dropdown.Item>個人資料</Dropdown.Item>
                       </Link>
                       <Link to="/orderhistory">
-                        <Dropdown.Item>Order History</Dropdown.Item>
+                        <Dropdown.Item>歷史訂單</Dropdown.Item>
                       </Link>
                       <Dropdown.Divider />
                       <Link to="/signin" onClick={signoutHandler}>
-                        <Dropdown.Item>Sign out</Dropdown.Item>
+                        <Dropdown.Item>登出</Dropdown.Item>
                       </Link>
                     </Dropdown>
                   </div>
@@ -166,7 +166,7 @@ function App() {
                     to="/signin"
                     className="ml-5 hidden text-xl text-white sm:block"
                   >
-                    SignIn
+                    登入
                   </Link>
                   <Link
                     to="/signin"

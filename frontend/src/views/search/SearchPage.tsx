@@ -130,7 +130,7 @@ const SearchPage = () => {
       <div className="text-center sm:grid sm:grid-cols-4 sm:text-left">
         <div className="col-span-4 sm:col-span-1">
           <div className="mb-5 mt-1">
-            <h2 className="text-2xl font-bold">Department</h2>
+            <h2 className="text-2xl font-bold">商品分類</h2>
             <ul>
               <li>
                 <Link
@@ -154,7 +154,7 @@ const SearchPage = () => {
           </div>
 
           <div className="mb-5 mt-1">
-            <h2 className="text-2xl font-bold">Price</h2>
+            <h2 className="text-2xl font-bold">價錢</h2>
             <ul>
               <li>
                 <Link
@@ -178,7 +178,7 @@ const SearchPage = () => {
           </div>
 
           <div className="mb-5 mt-1">
-            <h2 className="text-2xl font-bold">Avg Customer Review</h2>
+            <h2 className="text-2xl font-bold">評價</h2>
             <ul className="flex flex-col items-center sm:block">
               {ratings.map((r) => (
                 <li key={r.name}>
@@ -212,24 +212,30 @@ const SearchPage = () => {
               <>
                 <div className="mx-4 flex items-center justify-between">
                   <div className="">
-                    <div>
-                      {countProducts === 0 ? 'no' : countProducts} Results
+                    <div className="flex items-center justify-center">
+                      {countProducts === 0 ? 'no' : countProducts} 個結果
                       {query !== 'all' && ' : ' + query}
                       {category !== 'all' && ' : ' + category}
                       {price !== 'all' && ' : Price' + price}
                       {rating !== 'all' && ' : Rating' + rating + ' & up'}
                       {query !== 'all' ||
-                        category !== 'all' ||
-                        price !== 'all' ||
-                        rating !== 'all' ? (
-                        <button onClick={() => navigate('/search')}>
-                          <FaTimesCircle />
-                        </button>
+                      category !== 'all' ||
+                      price !== 'all' ||
+                      rating !== 'all' ? (
+                        <div className="flex items-center justify-center">
+                          {' '}
+                          <button
+                            className="ml-1"
+                            onClick={() => navigate('/search')}
+                          >
+                            <FaTimesCircle />
+                          </button>
+                        </div>
                       ) : null}
                     </div>
                   </div>
                   <div className="">
-                    Sort by {'  '}
+                    排序 <span className="text-white"> w</span>
                     <select
                       className="rounded border-[#e0e0e0]"
                       value={order}
@@ -237,10 +243,10 @@ const SearchPage = () => {
                         navigate(getFilterUrl({ order: e.target.value }))
                       }}
                     >
-                      <option value="newest">Newest Arrivals</option>
-                      <option value="lowest">Price: Low to High</option>
-                      <option value="highest">Price: High to Low</option>
-                      <option value="toprated">Avg. Customer Reviews</option>
+                      <option value="newest">最新商品</option>
+                      <option value="lowest">價錢： 由低到高</option>
+                      <option value="highest">價錢： 由高到低</option>
+                      <option value="toprated">評價</option>
                     </select>
                   </div>
                 </div>

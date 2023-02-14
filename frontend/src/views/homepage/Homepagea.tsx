@@ -50,9 +50,7 @@ const Homepagea = () => {
 
   return (
     <>
-      <h1 className="text-center text-3xl font-bold sm:text-left">
-        Featured Products
-      </h1>
+      <h1 className="text-center text-3xl font-bold sm:text-left">熱門商品</h1>
       <Helmet>
         <title>lowmazon</title>
       </Helmet>

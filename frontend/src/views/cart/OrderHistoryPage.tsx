@@ -49,7 +49,7 @@ const OrderHistoryPage = () => {
       <Helmet>
         <title>Order History</title>
       </Helmet>
-      <h1 className="text-center sm:text-left">Order History</h1>
+      <h1 className="text-center sm:text-left">歷史訂單</h1>
       {loading ? (
         <Loadingcpm></Loadingcpm>
       ) : error ? (
@@ -63,25 +63,25 @@ const OrderHistoryPage = () => {
                 <span className="font-bold text-sky-800">{order._id}</span>
               </li>
               <li className="mb-1">
-                <strong>DATE : </strong>
+                <strong>日期 : </strong>
                 <span className="font-bold text-sky-800">
                   {order.createdAt.substring(0, 10)}
                 </span>
               </li>
               <li className="mb-1">
-                <strong>TOTAL : </strong>
+                <strong>總金額 : </strong>
                 <span className="font-bold text-sky-800">
                   {order.totalPrice.toFixed(2)}
                 </span>
               </li>
               <li className="mb-1">
-                <strong>PAID : </strong>
+                <strong>是否已支付 : </strong>
                 <span className="font-bold text-sky-800">
                   {order.isPaid ? order.paidAt.substring(0, 10) : 'No'}
                 </span>
               </li>
               <li className="mb-1">
-                <strong>DELIVERED : </strong>
+                <strong>是否已送達 : </strong>
                 <span className="font-bold text-sky-800">
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)
@@ -89,7 +89,7 @@ const OrderHistoryPage = () => {
                 </span>
               </li>
               <li className="mb-1">
-                <strong>ACTIONS : </strong>
+                <strong>其他 : </strong>
                 <button
                   type="button"
                   className="text-md ml-2 flex-grow rounded-lg bg-sky-800 px-2 py-1 font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300"
@@ -97,7 +97,7 @@ const OrderHistoryPage = () => {
                     navigate(`/order/${order._id}`)
                   }}
                 >
-                  Details
+                  詳細資訊
                 </button>
               </li>
             </ul>

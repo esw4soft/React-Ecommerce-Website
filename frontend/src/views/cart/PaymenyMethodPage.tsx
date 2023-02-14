@@ -33,7 +33,7 @@ const PaymenyMethodPage = () => {
       </Helmet>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <h1 className="mb-6 px-10 text-center md:mx-auto md:w-1/2 md:text-left">
-        Payment Method
+        支付方式
       </h1>
       <form onSubmit={submitHandler} className="px-10 md:m-auto md:w-1/2">
         <div className="mb-6">
@@ -77,7 +77,7 @@ const PaymenyMethodPage = () => {
             type="submit"
             className="mb-4 w-full rounded-lg bg-sky-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-sky-900 focus:outline-none focus:ring-4 focus:ring-blue-300 sm:w-auto"
           >
-            Continue
+            下一步
           </button>
         </div>
       </form>
