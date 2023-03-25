@@ -1,3 +1,4 @@
+
 # React Side Project: Ecommerce Website
 
 This project will build an ecommerce website.
@@ -8,8 +9,7 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 ## Notes
 
-12345
-紀錄開發時遇到的問題和一些重要註記123
+紀錄開發時遇到的問題和一些重要註記 123123
 
 1. TypeScript 開發參考  
    `https://pjchender.dev/react/guide-typescript-react-tips/`  
