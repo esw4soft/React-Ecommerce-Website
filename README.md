@@ -8,6 +8,7 @@ Front End: React + Redux + TypeScript + SCSS + TailwindCSS
 
 ## Notes
 
+12345
 紀錄開發時遇到的問題和一些重要註記123
 
 1. TypeScript 開發參考  
