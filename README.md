@@ -1,3 +1,15 @@
+程式註記:
+在練習使用 pull request 時遇到帳號無法上傳到 github 的問題
+其原因在於分身帳號沒有使用二次驗證導致不支援使用帳號密碼的身份認證，也就是 HTTPS 的模式上傳
+解決方法就是使用 ssh 來 clone 專案
+https://123davidbill.medium.com/%E8%A7%A3%E6%B1%BAgithub%E7%84%A1%E6%B3%95push-requested-url-returned-error-403%E5%95%8F%E9%A1%8C-213b08866a38
+
+https://israynotarray.com/git/20210630/3665920401/
+
+https://www.casper.tw/git/2018/02/12/github-ssh-https/
+
+ps 此問題花了我 3 小時解決，還沒玩到法環
+
 # React Side Project: Ecommerce Website
 
 This project will build an ecommerce website.
